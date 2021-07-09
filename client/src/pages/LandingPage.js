@@ -2,7 +2,7 @@ import React from "react";
 
 function ProjectStart() {
     return (
-        <p>welcome to the project start page.</p>
+        <p>welcome to the landing page.</p>
     )
 }
 
