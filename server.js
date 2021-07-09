@@ -10,10 +10,6 @@ const app = express();
 
 
 
-app.use(cookieParser("supersecret"));
-
-
-
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 if (process.env.NODE_ENV === 'production') {
@@ -25,6 +21,8 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
 }));
+
+app.use(cookieParser("supersecret"));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -39,9 +37,11 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/diydb',
   () => console.log('successful db connection')
 );
 
-app.get('*', function(req, res) {
-  res.sendFile(path.join(__dirname, './client/build/index.html'));
-});
+
+// advised not needed, see index.js in routes
+// app.get('*', function(req, res) {
+//   res.sendFile(path.join(__dirname, './client/build/index.html'));
+// });
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);

@@ -29,11 +29,17 @@ userSchema.pre('save', function(next) {
     });
 });
 
-userSchema.methods.validatePassword = function(plaintextPassword) {
+userSchema.methods.validatePassword = function(plaintextPassword, done) {
     bcrypt.compare(plaintextPassword, this.password, (err, result) => {
-        if (err)
+        if (err) {
             return err;
-        return result;
+        }
+        else {
+            if(!result) {
+                return done(null, result);
+            }
+            return done(null, this);
+        }
     });
 };
 
