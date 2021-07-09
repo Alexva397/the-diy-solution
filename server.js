@@ -22,6 +22,7 @@ app.use(session({
   saveUninitialized: true,
 }));
 
+
 app.use(cookieParser("supersecret"));
 
 app.use(passport.initialize());
@@ -38,10 +39,12 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/diydb',
 );
 
 
+
 // advised not needed, see index.js in routes
 // app.get('*', function(req, res) {
 //   res.sendFile(path.join(__dirname, './client/build/index.html'));
 // });
+
 
 app.listen(PORT, function() {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
