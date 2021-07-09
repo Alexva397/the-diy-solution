@@ -1,31 +1,86 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { Link, useLocation } from "react-router-dom";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
+import { AppBar, Toolbar, Typography, makeStyles, Button } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
 
-const useStyles = makeStyles({
-    linkColor: {
-        color: "black"
-    }
-})
+const useStyles = makeStyles(() => ({
+    header: {
+        backgroundColor: "rgb(155, 41, 184)",
+        paddingRight: "79px",
+        paddingLeft: "118px",
+    },
+    logo: {
+        fontFamily: "Inter",
+        fontWeight: 600,
+        color: "#FFFEFE",
+        textAlign: "left",
+    },
+    menuButton: {
+        fontFamily: "Inter",
+        fontWeight: 700,
+        size: "18px",
+        marginLeft: "38px",
+    },
+    toolbar: {
+        display: "flex",
+        justifyContent: "space-between",
+    },
+}))
+
+const headersData = [
+    {
+        label: "Home",
+        href: "/",
+    },
+    {
+        label: "Projects",
+        href: "/landing",
+    },
+    {
+        label: "Login",
+        href: "/login",
+    },
+];
 
 function Nav() {
-    const location = useLocation();
-    const classes = useStyles();
+    const { header, logo, menuButton, toolbar } = useStyles();
+
+    const displayDesktop = () => {
+        return (
+            <Toolbar className={toolbar}>
+                {diysolutionLogo}
+                <div>{getMenuButtons()}</div>
+            </Toolbar>
+        );
+    };
+
+    const diysolutionLogo = (
+        <Typography variant="h6" component="h1" className={logo}>
+            The DIY Solution
+        </Typography>
+    );
+
+    const getMenuButtons = () => {
+        return headersData.map(({ label, href }) => {
+            return (
+                <Button
+                    {...{
+                        key: label,
+                        color: "inherit",
+                        to: href,
+                        component: RouterLink,
+                        className: menuButton
+                    }}
+                >
+                    {label}
+                </Button>
+            );
+        });
+    };
+
     return (
-        <AppBar position="static" color="default">
-            <Tabs>
-                <Tab label="Google Books" disabled />
-                <Link to="/" className={location.pathname === "/"} className={classes.linkColor}>
-                    <Tab label="Search" />
-                </Link>
-                <Link to="/saved" className={location.pathname === "/saved"} className={classes.linkColor}>
-                    <Tab label="Saved" />
-                </Link>
-            </Tabs>
-        </AppBar>
+        <header>
+            <AppBar className={header}>{displayDesktop()}</AppBar>
+        </header>
     );
 }
 
