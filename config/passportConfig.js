@@ -10,16 +10,16 @@ passport.use(new LocalStrategy((username, password, done) => {
         if(!user) {
             return done(null, false);
         }
-        user.compare(password, done);
+        user.validatePassqord(password, done);
     });
 }));
 
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
+    done(null, user._id);
+});
   
-  passport.deserializeUser(function(id, done) {
-    User.findById(id, function(err, user) {
-      done(err, user);
-    });
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
   });
+});

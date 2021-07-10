@@ -17,13 +17,13 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(session({
-  secret: "supersecret",
+  secret: 'supersecret',
   resave: true,
   saveUninitialized: true,
 }));
 
 
-app.use(cookieParser("supersecret"));
+app.use(cookieParser('supersecret'));
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -40,10 +40,23 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/diydb',
 
 
 
-// advised not needed, see index.js in routes
-// app.get('*', function(req, res) {
-//   res.sendFile(path.join(__dirname, './client/build/index.html'));
-// });
+
+
+
+// const User = require('./models/user');
+
+// const userInput = {
+//   username: 'Alex123',
+//   email: 'alex@alex.com',
+//   password: 'secret123',
+// }
+
+// const user = new User(userInput);
+// user.save((err, input) => {
+//   if(err)
+//     console.log(err);
+//   console.log(input);
+// })
 
 
 app.listen(PORT, function() {
