@@ -29,8 +29,21 @@ router.post('/register', (req, res) => {
     })
 });
 
+// router.post('/login', (req, res, next) => {
+//     passport.authenticate('local', (err, user, info) => {
+//         if (err) throw err;
+//         if(!user) {
+//             return res.redirect('/login'); 
+//         }
+//         req.logIn(user, (err) => {
+//             if (err) throw err;
+//             return res.redirect('/');
+//         })
+//     })
+// });
 
-router.post('')
+router.post('/login', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/' }))
+
 
 
 module.exports = router;
