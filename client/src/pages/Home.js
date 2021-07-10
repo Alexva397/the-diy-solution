@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import BeforeAndAfter from "../components/AboutCard"
 
 const useStyles = makeStyles(() => ({
     home: {
@@ -11,7 +12,7 @@ const useStyles = makeStyles(() => ({
 function Home() {
     const { home } = useStyles();
     return (
-        <p className={home}>welcome to the home page.</p>
+        <BeforeAndAfter className={home}/>
 
     )
 }
