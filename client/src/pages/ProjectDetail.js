@@ -1,8 +1,9 @@
 import React from "react";
+import ProjectTabs from "../components/Tabs";
 
 function ProjectDetail() {
     return (
-        <p>welcome to the project detail page.</p>
+        <ProjectTabs />
     )
 }
 
