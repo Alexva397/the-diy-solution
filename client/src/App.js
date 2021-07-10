@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/SignIn";
 import Landing from "./pages/LandingPage";
+import Detail from "./pages/ProjectDetail";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/landing" component={Landing} />
+            <Route exact path="/detail" component={Detail} />
           </Switch>
         </Router>
       </div>
