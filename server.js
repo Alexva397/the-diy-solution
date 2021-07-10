@@ -18,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 
 app.use(session({
   secret: 'supersecret',
-  resave: true,
+  resave: false,
   saveUninitialized: true,
 }));
 
@@ -37,26 +37,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/diydb',
   },
   () => console.log('successful db connection')
 );
-
-
-
-
-
-
-// const User = require('./models/user');
-
-// const userInput = {
-//   username: 'Alex123',
-//   email: 'alex@alex.com',
-//   password: 'secret123',
-// }
-
-// const user = new User(userInput);
-// user.save((err, input) => {
-//   if(err)
-//     console.log(err);
-//   console.log(input);
-// })
 
 
 app.listen(PORT, function() {
