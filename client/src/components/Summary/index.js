@@ -18,6 +18,9 @@ function Summary() {
             <CssBaseline />
             <Grid item xs={12}>
                 <Typography className={classes.title}>
+                    Project Title
+                </Typography>
+                <Typography className={classes.title}>
                     Project total: $2800
                 </Typography>
 
