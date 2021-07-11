@@ -3,7 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const passport = require('passport');
+const passport = require('./passport');
 const cors = require('cors');
 const morgan = require('morgan');
 const routes = require('./routes');
@@ -27,10 +27,8 @@ app.use(session({
 }));
 
 
-
 app.use(cookieParser('supersecret'));
 
-// require('./passport/passportConfig')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 
