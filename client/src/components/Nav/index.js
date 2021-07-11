@@ -10,10 +10,8 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import HomeIcon from '@material-ui/icons/Home';
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { CallMissedSharp } from "@material-ui/icons";
 
 const headersData = [
   {
