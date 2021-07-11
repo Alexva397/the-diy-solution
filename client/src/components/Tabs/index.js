@@ -5,9 +5,9 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Home from '@material-ui/icons/Home';
-import Monetization from '@material-ui/icons/MonetizationOn';
+import Build from '@material-ui/icons/Build';
 import Camera from '@material-ui/icons/CameraAlt';
-import Note from '@material-ui/icons/Note';
+import Receipt from '@material-ui/icons/Receipt';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -83,9 +83,9 @@ function ProjectTabs() {
                     aria-label="scrollable force tabs example"
                 >
                     <Tab label="Summary" icon={<Home />} {...a11yProps(0)} />
-                    <Tab label="Materials" icon={<Monetization />} {...a11yProps(1)} />
+                    <Tab label="Materials" icon={<Build />} {...a11yProps(1)} />
                     <Tab label="Photos" icon={<Camera />} {...a11yProps(2)} />
-                    <Tab label="Docs" icon={<Note />} {...a11yProps(3)} />
+                    <Tab label="Docs" icon={<Receipt />} {...a11yProps(3)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
