@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const passport = require('passport');
-const passportConfig = require('../../config/passportConfig');
+const passportConfig = require('../../passport/passportConfig');
 const User = require('../../models/user');
 
 
@@ -21,6 +21,8 @@ router.post('/register', (req, res) => {
             User.create(newUser)
                 .then(newUserData => {
                     res.status(200).json(newUserData)
+                    req.session.username = username;
+                    console.log(req.session)
                 })
                 .catch(err => {
                     res.status(500).json(err);
@@ -44,6 +46,16 @@ router.post('/register', (req, res) => {
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/' }))
 
+
+// router.get('/:username', (req, res) => {
+//     console.log(req.user)
+//     res.send(req.user);
+// });
+
+router.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+});
 
 
 module.exports = router;
