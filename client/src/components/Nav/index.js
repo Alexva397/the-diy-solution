@@ -10,8 +10,10 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
+import HomeIcon from '@material-ui/icons/Home';
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { CallMissedSharp } from "@material-ui/icons";
 
 const headersData = [
   {
@@ -60,10 +62,13 @@ const useStyles = makeStyles(() => ({
   drawerContainer: {
     padding: "20px 30px",
   },
+  iconSize: {
+    fontSize: "35px",
+  }
 }));
 
 export default function Nav() {
-  const { header, logo, menuButton, toolbar, drawerContainer } = useStyles();
+  const { header, logo, menuButton, toolbar, drawerContainer, iconSize } = useStyles();
 
   const [state, setState] = useState({
     mobileView: false,
@@ -152,7 +157,7 @@ export default function Nav() {
 
   const diySolutionLogo = (
     <Typography variant="h6" component="h1" className={logo}>
-      The DIY Solution
+      The DIY Solution <span className={iconSize}>⌂</span>
     </Typography>
   );
 
