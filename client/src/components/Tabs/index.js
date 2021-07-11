@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
+import Home from '@material-ui/icons/Home';
+import Monetization from '@material-ui/icons/MonetizationOn';
+import Camera from '@material-ui/icons/CameraAlt';
+import Note from '@material-ui/icons/Note';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import Container from "@material-ui/core/Container";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 import Summary from "../Summary";
 import Materials from "../Materials";
@@ -20,8 +24,8 @@ function TabPanel(props) {
         <div
             role="tabpanel"
             hidden={value !== index}
-            id={`vertical-tabpanel-${index}`}
-            aria-labelledby={`vertical-tab-${index}`}
+            id={`scrollable-force-tabpanel-${index}`}
+            aria-labelledby={`scrollable-force-tab-${index}`}
             {...other}
         >
             {value === index && (
@@ -41,24 +45,19 @@ TabPanel.propTypes = {
 
 function a11yProps(index) {
     return {
-        id: `vertical-tab-${index}`,
-        'aria-controls': `vertical-tabpanel-${index}`,
+        id: `scrollable-force-tab-${index}`,
+        'aria-controls': `scrollable-force-tabpanel-${index}`,
     };
 }
 
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        backgroundColor: theme.palette.background.paper,
-        display: 'flex',
-        height: 500,
-        marginTop: theme.spacing(25),
+        width: '100%',
+        marginTop: theme.spacing(8),
     },
-    tabs: {
-        borderRight: `1px solid ${theme.palette.divider}`,
-    },
-    title: {
-        marginTop: theme.spacing(25),
+    center: {
+        alignItems: "center",
     }
 }));
 
@@ -71,39 +70,37 @@ function ProjectTabs() {
     };
 
     return (
-        <>
-            <h1 className={classes.root}>Project Title</h1>
-            <Container component="main" maxWidth="lg">
-                <CssBaseline />
-                <div className={classes.root}>
-                    <Tabs
-                        orientation="vertical"
-                        variant="scrollable"
-                        value={value}
-                        onChange={handleChange}
-                        aria-label="Vertical tabs example"
-                        className={classes.tabs}
-                    >
-                        <Tab label="Summary" {...a11yProps(0)} />
-                        <Tab label="Materials" {...a11yProps(1)} />
-                        <Tab label="Photos" {...a11yProps(2)} />
-                        <Tab label="Docs" {...a11yProps(3)} />
-                    </Tabs>
-                    <TabPanel value={value} index={0}>
-                        <Summary />
-                    </TabPanel>
-                    <TabPanel value={value} index={1}>
-                        <Materials />
-                    </TabPanel>
-                    <TabPanel value={value} index={2}>
-                        <Photos />
-                    </TabPanel>
-                    <TabPanel value={value} index={3}>
-                        <Docs />
-                    </TabPanel>
-                </div>
-            </Container>
-        </>
+        <div className={classes.root}>
+            <CssBaseline />
+            <AppBar className={classes.center} position="static" color="default">
+                <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="scrollable"
+                    scrollButtons="on"
+                    indicatorColor="primary"
+                    textColor="primary"
+                    aria-label="scrollable force tabs example"
+                >
+                    <Tab label="Summary" icon={<Home />} {...a11yProps(0)} />
+                    <Tab label="Materials" icon={<Monetization />} {...a11yProps(1)} />
+                    <Tab label="Photos" icon={<Camera />} {...a11yProps(2)} />
+                    <Tab label="Docs" icon={<Note />} {...a11yProps(3)} />
+                </Tabs>
+            </AppBar>
+            <TabPanel value={value} index={0}>
+                <Summary />
+            </TabPanel>
+            <TabPanel value={value} index={1}>
+                <Materials />
+            </TabPanel>
+            <TabPanel value={value} index={2}>
+                <Photos />
+            </TabPanel>
+            <TabPanel value={value} index={3}>
+                <Docs />
+            </TabPanel>
+        </div>
     );
 }
 
