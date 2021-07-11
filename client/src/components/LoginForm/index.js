@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -46,6 +46,15 @@ const useStyles = makeStyles((theme) => ({
 function SignIn() {
     const classes = useStyles();
 
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log("email is " + email);
+        console.log("password is " + password);
+    }
+
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -54,7 +63,7 @@ function SignIn() {
                     <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                    Sign In
+                    Login
                 </Typography>
                 <form className={classes.form} noValidate>
                     <TextField
@@ -67,6 +76,7 @@ function SignIn() {
                         name="email"
                         autoComplete="email"
                         autoFocus
+                        onChange={e => setEmail(e.target.value)}
                     />
                     <TextField
                         variant="outlined"
@@ -78,6 +88,7 @@ function SignIn() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
+                        onChange={e => setPassword(e.target.value)}
                     />
                     <Button
                         type="submit"
@@ -85,6 +96,7 @@ function SignIn() {
                         variant="outlined"
                         color="primary"
                         className={classes.submit}
+                        onClick={handleSubmit}
                     >
                         Sign In
                     </Button>

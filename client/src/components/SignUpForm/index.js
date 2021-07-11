@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -44,8 +44,20 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 function SignUp() {
     const classes = useStyles();
+
+    const [username, setUsername] = useState();
+    const [email, setEmail] = useState();
+    const [password, setPassword] = useState();
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        console.log("username is " + username);
+        console.log("email is " + email);
+        console.log("password is " + password);
+    }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -69,6 +81,7 @@ function SignUp() {
                                 id="username"
                                 label="Username"
                                 autoFocus
+                                onChange={e => setUsername(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -80,6 +93,7 @@ function SignUp() {
                                 label="Email Address"
                                 name="email"
                                 autoComplete="email"
+                                onChange={e => setEmail(e.target.value)}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -92,6 +106,7 @@ function SignUp() {
                                 name="password"
                                 type="password"
                                 autoComplete="current-password"
+                                onChange={e => setPassword(e.target.value)}
                             />
                         </Grid>
                     </Grid>
@@ -101,6 +116,7 @@ function SignUp() {
                         variant="outlined"
                         color="primary"
                         className={classes.submit}
+                        onClick={handleSubmit}
                     >
                         Sign Up
                     </Button>
