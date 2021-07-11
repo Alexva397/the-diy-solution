@@ -31,17 +31,22 @@ router.post('/register', (req, res) => {
     })
 });
 
-// router.post('/login', (req, res, next) => {
-//     next();
-// },
-//     passport.authenticate('local', (req, res) => {
-//         const userInfo = { username: req.user.username };
-//         res.send(userInfo);
-//     })
-// );
+// router.post('/login', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/' }))
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/' }))
-
+router.post('/login', function(req, res, next) {
+		console.log(req.body);
+		next();
+	},
+	passport.authenticate('local'), (req, res) => {
+		const user = JSON.parse(JSON.stringify(req.user));
+		const cleanUser = Object.assign({}, user);
+		if (cleanUser.local) {
+			console.log(`Deleting ${cleanUser.local.password}`);
+			delete cleanUser.local.password;
+		}
+		res.json({ user: cleanUser });
+	}
+);
 
 router.get('/user', (req, res) => {
     console.log(req.user)
