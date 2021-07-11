@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const passport = require('passport');
-const passportConfig = require('../../passport/passportConfig');
+const passport = require('../../passport');
+// const passportConfig = require('../../passport/localStrategy');
 const User = require('../../models/user');
 
 
@@ -16,13 +16,13 @@ router.post('/register', (req, res) => {
         }
         else {   
             const newUser = new User({ username, email, password });
-            console.log(newUser);
 
             User.create(newUser)
                 .then(newUserData => {
-                    res.status(200).json(newUserData)
+                    res.status(200).json(newUserData);
                     req.session.username = username;
-                    console.log(req.session)
+                    console.log(req.session);
+                    console.log(newUserData);
                 })
                 .catch(err => {
                     res.status(500).json(err);
@@ -32,25 +32,21 @@ router.post('/register', (req, res) => {
 });
 
 // router.post('/login', (req, res, next) => {
-//     passport.authenticate('local', (err, user, info) => {
-//         if (err) throw err;
-//         if(!user) {
-//             return res.redirect('/login'); 
-//         }
-//         req.logIn(user, (err) => {
-//             if (err) throw err;
-//             return res.redirect('/');
-//         })
+//     next();
+// },
+//     passport.authenticate('local', (req, res) => {
+//         const userInfo = { username: req.user.username };
+//         res.send(userInfo);
 //     })
-// });
+// );
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/' }))
 
 
-// router.get('/:username', (req, res) => {
-//     console.log(req.user)
-//     res.send(req.user);
-// });
+router.get('/user', (req, res) => {
+    console.log(req.user)
+    res.send(req.user);
+});
 
 router.get('/logout', function(req, res){
     req.logout();
