@@ -31,25 +31,46 @@ router.post('/register', (req, res) => {
     })
 });
 
-// router.post('/login', (req, res, next) => {
-//     next();
-// },
-//     passport.authenticate('local', (req, res) => {
-//         const userInfo = { username: req.user.username };
-//         res.send(userInfo);
-//     })
-// );
+// router.post('/login', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/' }))
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/' }))
+router.post('/login', function(req, res, next) {
+		console.log(req.body);
+		next();
+	},
+	passport.authenticate('local'), (req, res) => {
+		const user = JSON.parse(JSON.stringify(req.user));
+		const cleanUser = Object.assign({}, user);
+		if (cleanUser.local) {
+			console.log(`Deleting ${cleanUser.local.password}`);
+			delete cleanUser.local.password;
+		}
+		res.json({ user: cleanUser });
+	}
+);
 
-
-router.get('/user', (req, res) => {
+// get user object for state
+router.get('/getuser', (req, res) => {
     console.log(req.user)
     res.send(req.user);
 });
 
 router.get('/logout', function(req, res){
     req.logout();
+    res.redirect('/');
+});
+
+
+
+// ------------------ Googule 0auth2.0 routes ----------------------
+
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
     res.redirect('/');
 });
 

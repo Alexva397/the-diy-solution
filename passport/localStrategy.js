@@ -7,13 +7,11 @@ const strategy = new LocalStrategy((username, password, done) => {
             return done(err);
         }
         if(!user) {
-            return done(null, false);
+            return done(null, false, { message: 'Incorrect Username' });
         }
         user.validatePassword(password, done);
     });
 });
-
-
 
 // passport.use(new LocalStrategy(
 //   function(username, password, done) {
