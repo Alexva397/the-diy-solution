@@ -48,13 +48,29 @@ router.post('/login', function(req, res, next) {
 	}
 );
 
-router.get('/user', (req, res) => {
+// get user object for state
+router.get('/getuser', (req, res) => {
     console.log(req.user)
     res.send(req.user);
 });
 
 router.get('/logout', function(req, res){
     req.logout();
+    res.redirect('/');
+});
+
+
+
+// ------------------ Googule 0auth2.0 routes ----------------------
+
+app.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile'] }));
+
+
+app.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
     res.redirect('/');
 });
 
