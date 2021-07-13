@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -12,10 +12,12 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Summary from "../Summary";
-import Materials from "../Materials";
-import Photos from '../Photos';
-import Docs from "../Docs";
+import API from "../utils/API";
+
+import Summary from "../components/Summary"
+import Materials from "../components/Materials";
+import Photos from '../components/Photos';
+import Docs from "../components/Docs";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -61,9 +63,24 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function ProjectTabs() {
+function Detail() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+
+    const [project, setProject] = useState([])
+
+    useEffect(() => {
+        getProject()
+    }, [])
+
+    function getProject(_id) {
+        API.getProject(_id)
+            .then(res => {
+
+                console.log(res);
+            })
+            .catch(err => console.log(err));
+    }
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -104,4 +121,4 @@ function ProjectTabs() {
     );
 }
 
-export default ProjectTabs;
+export default Detail;
