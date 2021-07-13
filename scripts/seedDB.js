@@ -11,43 +11,43 @@ const projectSeed = [
     title: 'Cottage',
     description: 'A quaint cottage',
     materials: [
-        {
-            item: '',
-            budgetPrice: 150,
-            purchasePrice: 200
-        }
+      {
+        item: 'paint',
+        budgetPrice: 150,
+        purchasePrice: 200
+      }
     ],
     photos: [
-    {
+      {
         before: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
         progress: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
         after: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png'
-    }
+      }
     ],
     docs: [
-        {
-            receipts: [
-                {
-                    1: 'https://makereceipt.com/impImages/restaurantCreditDefault.jpg'
-                },
-                {
-                    2: 'https://i.pinimg.com/474x/89/7b/96/897b96d3dae8f52beb36d1f58193343b.jpg'
-                }
-            ],
-            manuals: [
-                {
-                    1: 'How To Build a Cottage'
-                }
-            ],
-            contractor: [
-                {
-                 name: 'Katy Chadwell'   
-                },
-                {
-                phone: 555-555-5555
-                }
-            ]
-        }
+      {
+        receipts: [
+          {
+            1: 'https://makereceipt.com/impImages/restaurantCreditDefault.jpg'
+          },
+          {
+            2: 'https://i.pinimg.com/474x/89/7b/96/897b96d3dae8f52beb36d1f58193343b.jpg'
+          }
+        ],
+        manuals: [
+          {
+            1: 'How To Build a Cottage'
+          }
+        ],
+        contractor: [
+          {
+            name: 'Katy Chadwell'
+          },
+          {
+            phone: 555 - 555 - 5555
+          }
+        ]
+      }
     ]
   }
 ];
