@@ -1,6 +1,5 @@
 const router = require('express').Router();
-const passport = require('../../passport');
-// const passportConfig = require('../../passport/localStrategy');
+const passport = require('passport');
 const User = require('../../models/user');
 
 
@@ -63,16 +62,17 @@ router.get('/logout', function(req, res){
 
 // ------------------ Googule 0auth2.0 routes ----------------------
 
-app.get('/auth/google',
+router.get('/auth/google',
   passport.authenticate('google', { scope: ['profile'] }));
 
 
-app.get('/auth/google/callback', 
+router.get('/auth/google/callback', 
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
+    res.redirect('http://localhost:3000/landing');
 });
+
 
 
 module.exports = router;

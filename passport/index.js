@@ -11,6 +11,7 @@ passport.serializeUser(function (user, done) {
 });
   
 passport.deserializeUser(function (id, done) {
+    console.log(id, done);
 //   User.findById(id, function(err, user) {
 //     done(err, user);
 //   });
@@ -22,7 +23,7 @@ passport.deserializeUser(function (id, done) {
     })
 });
 
-passport.use(googleStrategy);
-passport.use(localStrategy);
+passport.use('google', googleStrategy);
+passport.use('local', localStrategy);
 
 module.exports = passport;

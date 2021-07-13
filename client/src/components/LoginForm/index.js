@@ -49,6 +49,15 @@ function SignIn() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
+    // const loginUser = () => {
+
+    // }
+
+    const googleLogin = () => {
+        window.open("http://localhost:3001/api/user/auth/google", "_self");
+    }
+
+
     const handleSubmit = e => {
         e.preventDefault();
         console.log("email is " + email);
@@ -101,6 +110,10 @@ function SignIn() {
                         Sign In
                     </Button>
                 </form>
+                <Button 
+                    onClick={googleLogin}
+                >Login with Google
+                </Button>
             </div>
             <Box mt={8}>
                 <Copyright />
