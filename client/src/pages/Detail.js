@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -71,18 +72,16 @@ function Detail() {
         project: []
     })
 
+    const { id } = useParams()
     useEffect(() => {
-        getProject()
-    }, [])
-
-    function getProject(_id) {
-        API.getProject(_id)
-            .then(res => {
-
-                console.log(res);
-            })
+        API.getProject(id)
+            .then(res => setProject(res.data))
             .catch(err => console.log(err));
+<<<<<<< HEAD
     }
+=======
+    }, [id])
+>>>>>>> 418af81e0ced0db9bd20bbc69ac624f3ddbad0fc
 
     console.log("project", project);
 
@@ -113,7 +112,7 @@ function Detail() {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <Summary />
+                <Summary title={project.title} />
             </TabPanel>
             <TabPanel value={value} index={1}>
 
