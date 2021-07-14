@@ -7,8 +7,6 @@ function ListItem(title,description) {
             <br/>
             <h3>{description}</h3>
             <br/>
-            {/* <img src={photos[0].before} alt={title}></img> */}
-
         </div>
     )
 }
