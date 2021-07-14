@@ -9,6 +9,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import API from "../../utils/API";
+
 
 function Copyright() {
     return (
@@ -46,13 +48,31 @@ const useStyles = makeStyles((theme) => ({
 function SignIn() {
     const classes = useStyles();
 
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [loginUsername, setLoginUsername] = useState("");
+    const [loginPassword, setLoginPassword] = useState("");
+
+
+    const googleLogin = () => {
+        window.open("http://localhost:3001/api/user/auth/google", "_self");
+    }
+
+
+    // const loginUser = () => {
+
+    // }
+
+    const googleLogin = () => {
+        window.open("http://localhost:3001/api/user/auth/google", "_self");
+    }
+
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log("email is " + email);
-        console.log("password is " + password);
+        console.log("username is " + loginUsername);
+        console.log("password is " + loginPassword);
+    
+        API.loginUser(loginUsername, loginPassword);
+
     }
 
     return (
@@ -71,12 +91,12 @@ function SignIn() {
                         margin="normal"
                         required
                         fullWidth
-                        id="email"
-                        label="Email Address"
-                        name="email"
-                        autoComplete="email"
+                        id="username"
+                        label="Username"
+                        name="username"
+                        autoComplete="username"
                         autoFocus
-                        onChange={e => setEmail(e.target.value)}
+                        onChange={e => setLoginUsername(e.target.value)}
                     />
                     <TextField
                         variant="outlined"
@@ -88,7 +108,7 @@ function SignIn() {
                         type="password"
                         id="password"
                         autoComplete="current-password"
-                        onChange={e => setPassword(e.target.value)}
+                        onChange={e => setLoginPassword(e.target.value)}
                     />
                     <Button
                         type="submit"
@@ -101,6 +121,10 @@ function SignIn() {
                         Sign In
                     </Button>
                 </form>
+                <Button 
+                    onClick={googleLogin}
+                >Login with Google
+                </Button>
             </div>
             <Box mt={8}>
                 <Copyright />
