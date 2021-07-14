@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: "#fc4a1a",
     },
     form: {
         width: "100%",
