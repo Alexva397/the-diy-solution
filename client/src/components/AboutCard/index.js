@@ -16,7 +16,6 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import beforeAfter from '../../images/beforeAfter.jpeg';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function BeforeAndAfter() {
+export default function RecipeReviewCard() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -67,8 +66,8 @@ export default function BeforeAndAfter() {
       />
       <CardMedia
         className={classes.media}
-        image={beforeAfter}
-        title="Kitchen Before and After"
+        image="/static/images/cards/paella.jpg"
+        title="Paella dish"
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
