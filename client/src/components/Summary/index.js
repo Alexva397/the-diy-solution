@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     },
 });
 
-function Summary() {
+function Summary({ title }) {
     const classes = useStyles();
 
     return (
@@ -18,7 +18,7 @@ function Summary() {
             <CssBaseline />
             <Grid item xs={12}>
                 <Typography className={classes.title}>
-                    Project Title
+                    {title}
                 </Typography>
                 <Typography className={classes.title}>
                     Project total: $2800

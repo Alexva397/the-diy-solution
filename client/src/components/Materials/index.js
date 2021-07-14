@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Materials(props) {
+function Materials({ key, item, budgetPrice, purchasePrice }) {
     const classes = useStyles([]);
     const [formObject, setFormObject] = useState({
         id: 1,
@@ -33,42 +33,7 @@ function Materials(props) {
         purchasePrice: "",
     });
 
-    useEffect(() => {
-        loadItems()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
 
-    function loadItems(id) {
-        API.getProject(id)
-            .then(res => loadItems())
-            .catch(err => console.log(err));
-    };
-
-    function handleInputChange(event) {
-        const { name, value } = event.target;
-        setFormObject({ ...formObject, [name]: value })
-    };
-
-    function handleFormSubmit(event) {
-        event.preventDefault();
-        if (formObject.item && formObject.budgetPrice && formObject.purchasePrice) {
-            console.log(formObject);
-            API.saveProject({
-                id: 1,
-                item: formObject.item,
-                budgetPrice: formObject.budgetPrice,
-                purchasePrice: formObject.purchasePrice
-            })
-
-                .then(() => setFormObject({
-                    item: "",
-                    budgetPrice: "",
-                    purchasePrice: ""
-                }))
-                .then(() => loadItems())
-                .catch(err => console.log(err));
-        }
-    }
 
     return (
         <>
@@ -81,7 +46,7 @@ function Materials(props) {
                         placeholder="Placeholder"
                         multiline
                         className={classes.textfield}
-                        onChange={handleInputChange}
+
                         value={formObject.item}
 
                     />
@@ -92,7 +57,7 @@ function Materials(props) {
                         placeholder="Placeholder"
                         multiline
                         className={classes.textfield}
-                        onChange={handleInputChange}
+
                         value={formObject.budgetPrice}
                     />
                     <TextField
@@ -102,12 +67,12 @@ function Materials(props) {
                         placeholder="Placeholder"
                         multiline
                         className={classes.textfield}
-                        onChange={handleInputChange}
+
                         value={formObject.purchasePrice}
                     />
                     <Button
                         disabled={!formObject.item && formObject.budgetPrice && formObject.purchasePrice}
-                        onClick={handleFormSubmit}
+
                         type="submit"
                         multiline
                         variant="outlined"
@@ -129,14 +94,9 @@ function Materials(props) {
                 </Thead>
                 <Tbody>
                     <Tr>
-                        <Td>Paint</Td>
-                        <Td>$150</Td>
-                        <Td>$200</Td>
-                    </Tr>
-                    <Tr>
-                        <Td>Cabinets</Td>
-                        <Td>$500</Td>
-                        <Td>$408</Td>
+                        <Td>{item}</Td>
+                        <Td>{budgetPrice}</Td>
+                        <Td>{purchasePrice}</Td>
                     </Tr>
                 </Tbody>
             </Table>
