@@ -82,6 +82,11 @@ function Detail() {
             .catch(err => console.log(err));
     }
     
+    console.log("project", project);
+
+    console.log("title", project.title);
+    console.log("materials", project.materials)
+
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
