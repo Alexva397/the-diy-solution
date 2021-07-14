@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import API from "../../utils/API";
 
 function Copyright() {
     return (
@@ -48,15 +49,23 @@ const useStyles = makeStyles((theme) => ({
 function SignUp() {
     const classes = useStyles();
 
-    const [username, setUsername] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+
+
 
     const handleSubmit = e => {
         e.preventDefault();
         console.log("username is " + username);
         console.log("email is " + email);
         console.log("password is " + password);
+        const newUser = {
+            username: username,
+            email: email,
+            password: password,
+        }
+        API.registerUser(newUser);
     }
 
     return (

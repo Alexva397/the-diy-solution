@@ -5,7 +5,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/SignIn";
 import Landing from "./pages/LandingPage";
-import Detail from "./pages/Detail";
+import Detail from "./pages/ProjectDetail";
+import "./assets/css/globalStyles.css";
 
 function App() {
   return (
