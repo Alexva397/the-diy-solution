@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: "#fc4a1a",
     },
     form: {
         width: "100%",
@@ -56,7 +56,6 @@ function SignIn() {
     const googleLogin = () => {
         window.open("http://localhost:3001/api/user/auth/google", "_self");
     }
-
 
 
     const handleSubmit = e => {
