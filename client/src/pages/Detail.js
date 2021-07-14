@@ -68,15 +68,14 @@ function Detail() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
 
-    const [project, setProject] = useState([])
+    const [project, setProject] = useState({
+        project: []
+    })
 
     const { id } = useParams()
     useEffect(() => {
         API.getProject(id)
-            .then(res => {
-                setProject(res.data)
-                console.log(res)
-            })
+            .then(res => setProject(res.data))
             .catch(err => console.log(err));
     }, [id])
 
@@ -113,7 +112,7 @@ function Detail() {
             </TabPanel>
             <TabPanel value={value} index={1}>
 
-                <Materials key={project.title} item={project.item} budgetPrice={project.budgetPrice} purchasePrice={project.purchasePrice} />
+                <Materials key={project.title} materials={project.materials} />
 
 
             </TabPanel>
