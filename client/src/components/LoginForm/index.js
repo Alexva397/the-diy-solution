@@ -61,10 +61,6 @@ function SignIn() {
 
     // }
 
-    const googleLogin = () => {
-        window.open("http://localhost:3001/api/user/auth/google", "_self");
-    }
-
 
     const handleSubmit = e => {
         e.preventDefault();

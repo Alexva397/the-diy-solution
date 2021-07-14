@@ -7,10 +7,10 @@ export default {
         return axios.get("/api/projects/");
     },
     getProject: function (id) {
-        return axios.get("/api/project/" + id);
+        return axios.get("/api/projects/" + id);
     },
     saveProject: function (projectData) {
-        return axios.post("/api/project", projectData);
+        return axios.post("/api/projects", projectData);
     },
     registerUser: function (userData) {
         return axios.post("/api/user/register", userData);
