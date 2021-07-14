@@ -2,14 +2,14 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/user');
 
 const strategy = new LocalStrategy((username, password, done) => {
-    User.findOne({ username }, (err, user) => {
+    User.findOne({ username }, (err, isMatch) => {
         if (err) {
             return done(err);
         }
-        if(!user) {
+        if(!isMatch) {
             return done(null, false, { message: 'Incorrect Username' });
         }
-        return user.validatePassword(password, done);
+        return isMatch.validatePassword(password, done);
     });
 });
 

@@ -9,7 +9,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import API from "../../utils/API";
+// import API from "../../utils/API";
+import axios from "axios";
 
 
 function Copyright() {
@@ -57,21 +58,27 @@ function SignIn() {
     }
 
 
-    // const loginUser = () => {
-
-    // }
-
-    const googleLogin = () => {
-        window.open("http://localhost:3001/api/user/auth/google", "_self");
-    }
-
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log("username is " + loginUsername);
-        console.log("password is " + loginPassword);
-    
-        API.loginUser(loginUsername, loginPassword);
+
+        // axios({
+        //     method: "POST",
+        //     data: {
+        //         username: loginUsername,
+        //         password: loginPassword,
+        //     },
+        //     withCredentials: true,
+        //     url: "http://localhost:3000/api/user/login",
+        // })
+        axios.post("/api/user/login", { username: loginUsername, password: loginPassword })
+        .then((res) => {
+            if (res.data.redirect === '/') {
+                window.location = "/"
+            } else if (res.data.redirect === '/login'){
+                window.location = "/login"
+            }
+        });
 
     }
 

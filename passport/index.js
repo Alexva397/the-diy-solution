@@ -11,21 +11,16 @@ passport.serializeUser(function (user, done) {
 });
   
 passport.deserializeUser(function (id, done) {
-    console.log(id);
-
-//   User.findById(id, function(err, user) {
-//     done(err, user);
-//   });
-    User.findOne(id, (err, user) => {
+    // User.findOne(id, (err, user) => {
+    //     console.log('----Deserialize User called----');
+    //     console.log(user);
+    //     done(null, user);
+    // })
+    User.findOne({ _id: id }, (err, user) => {
         console.log('----Deserialize User called----');
         console.log(user);
-        done(null, user);
+        done(null, { _id: user._id });
     })
-//     User.findOne({ _id: id }, (err, user) => {
-//         console.log('----Deserialize User called----');
-//         console.log(user);
-//         done(null, user);
-//     })
 });
 
 passport.use('google', googleStrategy);
