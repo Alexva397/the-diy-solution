@@ -77,11 +77,7 @@ function Detail() {
         API.getProject(id)
             .then(res => setProject(res.data))
             .catch(err => console.log(err));
-<<<<<<< HEAD
-    }
-=======
     }, [id])
->>>>>>> 418af81e0ced0db9bd20bbc69ac624f3ddbad0fc
 
     console.log("project", project);
 
