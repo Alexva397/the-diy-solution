@@ -11,5 +11,12 @@ export default {
     },
     saveProject: function (projectData) {
         return axios.post("/api/project", projectData);
-    }
+    },
+    registerUser: function (userData) {
+        return axios.post("/api/user/register", userData);
+    },
+    loginUser: function () {
+        return axios.post("/api/user/login");
+    },
+    
 };
