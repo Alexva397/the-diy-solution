@@ -48,22 +48,17 @@ router.post('/register', (req, res) => {
 	})
 });
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login', successRedirect: '/landing' }))
+// router.post('/login', passport.authenticate('local', { failureRedirect: '/', successRedirect: 'http://localhost:3000/landing' }))
 
-// router.post('/login', function(req, res, next) {
-// 		console.log(req.body);
-// 		next();
-// 	},
-// 	passport.authenticate('local'), (req, res) => {
-// 		const user = JSON.parse(JSON.stringify(req.user));
-// 		const cleanUser = Object.assign({}, user);
-// 		if (cleanUser.local) {
-// 			console.log(`Deleting ${cleanUser.local.password}`);
-// 			delete cleanUser.local.password;
-// 		}
-// 		res.json({ user: cleanUser });
-// 	}
-// );
+router.post('/login', passport.authenticate('local'), (req, res, next) => {
+    if (req.user) {
+        const redir = { redirect: "/" };
+        return res.json(redir);
+  } else {
+        const redir = { redirect: '/login'};
+        return res.json(redir);
+  }
+})
 
 
 
