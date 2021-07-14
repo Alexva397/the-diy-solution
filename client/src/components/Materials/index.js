@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Materials({ key, item, budgetPrice, purchasePrice }) {
+function Materials({ key, materials }) {
     const classes = useStyles([]);
     const [formObject, setFormObject] = useState({
         id: 1,
@@ -33,7 +33,7 @@ function Materials({ key, item, budgetPrice, purchasePrice }) {
         purchasePrice: "",
     });
 
-
+    console.log("materials", materials)
 
     return (
         <>
@@ -92,13 +92,16 @@ function Materials({ key, item, budgetPrice, purchasePrice }) {
                         <Th>Purchase Price</Th>
                     </Tr>
                 </Thead>
-                <Tbody>
-                    <Tr>
-                        <Td>{item}</Td>
-                        <Td>{budgetPrice}</Td>
-                        <Td>{purchasePrice}</Td>
-                    </Tr>
-                </Tbody>
+                {materials.map(material => (
+
+                    <Tbody>
+                        <Tr>
+                            <Td>{material.item}</Td>
+                            <Td>{material.budgetPrice}</Td>
+                            <Td>{material.purchasePrice}</Td>
+                        </Tr>
+                    </Tbody>
+                ))}
             </Table>
         </>
     );
