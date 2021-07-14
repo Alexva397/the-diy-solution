@@ -36,7 +36,7 @@ const headersData = [
 
 const useStyles = makeStyles(() => ({
   header: {
-    backgroundColor: "rgb(155, 41, 184)",
+    backgroundColor: "#3fb0ac",
     paddingRight: "79px",
     paddingLeft: "118px",
     "@media (max-width: 900px)": {
@@ -46,7 +46,7 @@ const useStyles = makeStyles(() => ({
   logo: {
     fontFamily: "Inter",
     fontWeight: 600,
-    color: "#FFFEFE",
+    color: "#dddfd4",
     textAlign: "left",
   },
   menuButton: {

@@ -1,19 +1,24 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import BeforeAndAfter from "../components/AboutCard"
+import Hero from "../components/Hero";
+import CarouselCard from "../components/CarouselCard";
+import Footer from "../components/Footer";
 
 const useStyles = makeStyles(() => ({
     home: {
         marginTop: "300px",
-        color: "#000000",
+        color: "#fae596",
     },
 }))
 
 function Home() {
     const { home } = useStyles();
     return (
-        <BeforeAndAfter className={home}/>
-
+        <>
+        <Hero/>
+        <CarouselCard/>
+        <Footer/>
+        </>
     )
 }
 
