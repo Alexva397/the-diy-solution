@@ -1,6 +1,6 @@
 import React from "react";
 
-function ListItem(title,description) {
+function ListItem({title,description}) {
     return (
         <div>
             <h1>{title}</h1>

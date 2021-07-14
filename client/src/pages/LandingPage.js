@@ -28,9 +28,9 @@ function Landing() {
     };
     return (
         <div className={landing}>
-            title
-            {/* {state.projects.map((project) => {return <ListItem key= {project._id} title= {project.title} description= {project.description} 
-            materials={project.materials} photos={project.photos} docs={project.docs}></ListItem>})} */}
+            
+            {state.projects.map((project) => {return <ListItem key= {project._id} title= {project.title} description= {project.description} 
+            materials={project.materials} photos={project.photos} docs={project.docs}></ListItem>})} 
         </div>        
     )
 }
