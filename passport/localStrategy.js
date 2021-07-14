@@ -9,7 +9,7 @@ const strategy = new LocalStrategy((username, password, done) => {
         if(!user) {
             return done(null, false, { message: 'Incorrect Username' });
         }
-        user.validatePassword(password, done);
+        return user.validatePassword(password, done);
     });
 });
 
