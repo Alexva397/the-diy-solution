@@ -1,21 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Home from '@material-ui/icons/Home';
-import Monetization from '@material-ui/icons/MonetizationOn';
+import Build from '@material-ui/icons/Build';
 import Camera from '@material-ui/icons/CameraAlt';
-import Note from '@material-ui/icons/Note';
+import Receipt from '@material-ui/icons/Receipt';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import Summary from "../Summary";
-import Materials from "../Materials";
-import Photos from '../Photos';
-import Docs from "../Docs";
+import API from "../utils/API";
+
+import Summary from "../components/Summary"
+import Materials from "../components/Materials";
+import Photos from '../components/Photos';
+import Docs from "../components/Docs";
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -61,9 +63,24 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function ProjectTabs() {
+function Detail() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+
+    const [project, setProject] = useState([])
+
+    useEffect(() => {
+        getProject()
+    }, [])
+
+    function getProject(_id) {
+        API.getProject(_id)
+            .then(res => {
+
+                console.log(res);
+            })
+            .catch(err => console.log(err));
+    }
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -83,9 +100,9 @@ function ProjectTabs() {
                     aria-label="scrollable force tabs example"
                 >
                     <Tab label="Summary" icon={<Home />} {...a11yProps(0)} />
-                    <Tab label="Materials" icon={<Monetization />} {...a11yProps(1)} />
+                    <Tab label="Materials" icon={<Build />} {...a11yProps(1)} />
                     <Tab label="Photos" icon={<Camera />} {...a11yProps(2)} />
-                    <Tab label="Docs" icon={<Note />} {...a11yProps(3)} />
+                    <Tab label="Docs" icon={<Receipt />} {...a11yProps(3)} />
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
@@ -104,4 +121,4 @@ function ProjectTabs() {
     );
 }
 
-export default ProjectTabs;
+export default Detail;

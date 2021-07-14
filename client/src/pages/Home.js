@@ -5,7 +5,6 @@ import CarouselCard from "../components/CarouselCard";
 import Footer from "../components/Footer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
-
 const useStyles = makeStyles(() => ({
     home: {
         marginTop: "300px",

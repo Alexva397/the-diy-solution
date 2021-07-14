@@ -10,29 +10,8 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import HomeIcon from '@material-ui/icons/Home';
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { CallMissedSharp } from "@material-ui/icons";
-
-const headersData = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Login",
-    href: "/login",
-  },
-  {
-    label: "Sign Up",
-    href: "/signup"
-  },
-  {
-    label: "Projects",
-    href: "/landing",
-  },
-];
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -70,6 +49,8 @@ const useStyles = makeStyles(() => ({
 export default function Nav() {
   const { header, logo, menuButton, toolbar, drawerContainer, iconSize } = useStyles();
 
+  const isLoggedIn = true;
+
   const [state, setState] = useState({
     mobileView: false,
     drawerOpen: false,
@@ -97,8 +78,58 @@ export default function Nav() {
     return (
       <Toolbar className={toolbar}>
         {diySolutionLogo}
-        <div>{getMenuButtons()}</div>
-      </Toolbar>
+        <div>
+          <Button
+            {...{
+              key: "home",
+              color: "inherit",
+              to: "/",
+              component: RouterLink,
+              className: menuButton
+            }}
+          >
+            Home
+          </Button>
+          {!isLoggedIn &&
+            <Button
+              {...{
+                key: "login",
+                color: "inherit",
+                to: "/login",
+                component: RouterLink,
+                className: menuButton
+              }}
+            >
+              Login
+            </Button>}
+          {isLoggedIn &&
+            <Button
+              {...{
+                key: "projects",
+                color: "inherit",
+                to: "/landing",
+                component: RouterLink,
+                className: menuButton
+              }}
+            >
+              Projects
+            </Button>}
+          {isLoggedIn &&
+            <Button
+              {...{
+                key: "logout",
+                color: "inherit",
+                to: "/logout",
+                component: RouterLink,
+                className: menuButton
+              }}
+            >
+              Logout
+            </Button>}
+
+
+        </div>
+      </Toolbar >
     );
   };
 
@@ -129,7 +160,55 @@ export default function Nav() {
             onClose: handleDrawerClose,
           }}
         >
-          <div className={drawerContainer}>{getDrawerChoices()}</div>
+          <div className={drawerContainer}>
+            <Link
+              {...{
+                component: RouterLink,
+                to: "/",
+                color: "inherit",
+                style: { textDecoration: "none" },
+                key: "home",
+              }}
+            >
+              <MenuItem>Home</MenuItem>
+            </Link>
+            {!isLoggedIn &&
+              <Link
+                {...{
+                  component: RouterLink,
+                  to: "/login",
+                  color: "inherit",
+                  style: { textDecoration: "none" },
+                  key: "login",
+                }}
+              >
+                <MenuItem>Login</MenuItem>
+              </Link>}
+            {isLoggedIn &&
+              <Link
+                {...{
+                  component: RouterLink,
+                  to: "/landing",
+                  color: "inherit",
+                  style: { textDecoration: "none" },
+                  key: "projects",
+                }}
+              >
+                <MenuItem>Projects</MenuItem>
+              </Link>}
+            {isLoggedIn &&
+              <Link
+                {...{
+                  component: RouterLink,
+                  to: "/logout",
+                  color: "inherit",
+                  style: { textDecoration: "none" },
+                  key: "logout",
+                }}
+              >
+                <MenuItem>Logout</MenuItem>
+              </Link>}
+          </div>
         </Drawer>
 
         <div>{diySolutionLogo}</div>
@@ -137,47 +216,11 @@ export default function Nav() {
     );
   };
 
-  const getDrawerChoices = () => {
-    return headersData.map(({ label, href }) => {
-      return (
-        <Link
-          {...{
-            component: RouterLink,
-            to: href,
-            color: "inherit",
-            style: { textDecoration: "none" },
-            key: label,
-          }}
-        >
-          <MenuItem>{label}</MenuItem>
-        </Link>
-      );
-    });
-  };
-
   const diySolutionLogo = (
     <Typography variant="h6" component="h1" className={logo}>
       The DIY Solution <span className={iconSize}>⌂</span>
     </Typography>
   );
-
-  const getMenuButtons = () => {
-    return headersData.map(({ label, href }) => {
-      return (
-        <Button
-          {...{
-            key: label,
-            color: "inherit",
-            to: href,
-            component: RouterLink,
-            className: menuButton,
-          }}
-        >
-          {label}
-        </Button>
-      );
-    });
-  };
 
   return (
     <header>

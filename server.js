@@ -1,14 +1,17 @@
 const express = require('express');
-const path = require('path');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const passport = require('passport');
+const passport = require('./passport');
+const cors = require('cors');
+const morgan = require('morgan');
 const routes = require('./routes');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 
+app.use(cors());
+app.use(morgan('dev'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
