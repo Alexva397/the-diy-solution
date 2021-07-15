@@ -10,8 +10,6 @@ const googleStrategy = new GoogleStrategy(
         callbackURL: 'http://localhost:3001/api/user/auth/google/callback',
     },
     function (accessToken, refreshToken, profile, done) {
-        // let dispName = profile.dispalyName;
-        // let googleUsername = dispName.replace(/\s+/g, '');
         const { id, displayName } = profile;
 
         User.findOne({ googleId: id }, (err, isMatch) => {
@@ -36,7 +34,6 @@ const googleStrategy = new GoogleStrategy(
                 });
             }
         });
-        // return done(null, profile);
     }
 )
 

@@ -57,7 +57,6 @@ function SignIn() {
         window.open("http://localhost:3001/api/user/auth/google", "_self");
     }
 
-
     const handleSubmit = e => {
         e.preventDefault();
 
@@ -72,9 +71,9 @@ function SignIn() {
         // })
         axios.post("/api/user/login", { username: loginUsername, password: loginPassword })
         .then((res) => {
-            if (res.data.redirect === '/landing') {
+            if (res.data.redirect === "/landing") {
                 window.location = "/landing";
-            } else if (res.data.redirect === '/login'){
+            } else if (res.data.redirect === "/login"){
                 window.location = "/login";
             }
         });

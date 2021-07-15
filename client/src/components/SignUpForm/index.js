@@ -67,7 +67,10 @@ function SignUp() {
             email: email,
             password: password,
         }
-        API.registerUser(newUser);
+        API.registerUser(newUser)
+            .then(() => {
+                window.location = "/landing";
+            })
     }
 
     return (

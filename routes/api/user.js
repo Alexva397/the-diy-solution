@@ -10,11 +10,11 @@ router.post('/register', (req, res) => {
     //     if (err) {
     //         console.log(err);
     //         return res.status(500).json({ message: 'Error has occured' });
-            
+
     //     }
     //     if (userMatch) {
     //         return res.status(400).json({ message: 'Username is already in use.' });
-           
+
     //     }
     //     else {   
     //         const newUser = new User({ username, email, password });
@@ -30,36 +30,33 @@ router.post('/register', (req, res) => {
     //             })
     //     }
     // })
-	User.findOne({ username: username }, (err, userMatch) => {
-		if (userMatch) {
-			return res.json({
-				error: `Sorry, already a user with the username: ${username}`
-			})
-		}
-		const newUser = new User({
-			username: username,
+    User.findOne({ username: username }, (err, userMatch) => {
+        if (userMatch) {
+            return res.json({
+                error: `Sorry, already a user with the username: ${username}`
+            });
+        }
+        const newUser = new User({
+            username: username,
             email: email,
-			password: password,
-		})
-		newUser.save((err, savedUser) => {
-			if (err) return res.json(err)
-			return res.json(savedUser);
-		})
-	})
+            password: password,
+        });
+        newUser.save((err, savedUser) => {
+            if (err) return res.json(err);
+            return res.json(savedUser);
+        });
+    });
 });
-
-// router.post('/login', passport.authenticate('local', { failureRedirect: '/', successRedirect: 'http://localhost:3000/landing' }))
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
     if (req.user) {
         const redir = { redirect: '/landing' };
         return res.json(redir);
-  } else {
-        const redir = { redirect: '/login'};
+    } else {
+        const redir = { redirect: '/login' };
         return res.json(redir);
-  }
-})
-
+    }
+});
 
 
 // get user object for state
@@ -73,26 +70,21 @@ router.get('/user', (req, res) => {
     }
 });
 
-router.get('/logout', function(req, res){
+router.get('/logout', function (req, res) {
     req.logout();
     res.redirect('/');
 });
 
-
-
 // ------------------ Googule 0auth2.0 routes ----------------------
 
 router.get('/auth/google',
-  passport.authenticate('google', { scope: ['profile'] }));
+    passport.authenticate('google', { scope: ['profile'] }));
 
-
-router.get('/auth/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.redirect('http://localhost:3000/landing');
-});
-
-
+router.get('/auth/google/callback',
+    passport.authenticate('google', { failureRedirect: '/login' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('http://localhost:3000/landing');
+    });
 
 module.exports = router;

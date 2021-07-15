@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 
+
 app.use(cors());
 app.use(morgan('dev'));
 
@@ -20,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.use(session({
-  secret: 'supersecret',
+  secret: process.env.SESS_SECRET || 'supersecret',
   resave: false,
   saveUninitialized: true,
 }));
