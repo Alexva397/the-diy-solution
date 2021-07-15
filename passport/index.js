@@ -9,17 +9,17 @@ passport.serializeUser(function (user, done) {
     console.log(user);
     done(null, { _id: user._id });
 });
-  
+
 passport.deserializeUser(function (id, done) {
-    // User.findOne(id, (err, user) => {
-    //     console.log('----Deserialize User called----');
-    //     console.log(user);
-    //     done(null, user);
-    // })
-    User.findOne({ _id: id }, (err, user) => {
+    User.findOne(id, (err, user) => {
         console.log('----Deserialize User called----');
         console.log(user);
-        done(null, { _id: user._id });
+        done(null, user);
+    })
+    User.findOne({ _id: id }, (err, user) => {
+        // console.log('----Deserialize User called----');
+        // console.log(user);
+        // done(null, { _id: user._id });
     })
 });
 
