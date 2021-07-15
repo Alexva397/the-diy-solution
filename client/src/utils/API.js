@@ -9,6 +9,9 @@ export default {
     getProject: function (id) {
         return axios.get("/api/projects/" + id);
     },
+    updateProject: function (id, projectData) {
+        return axios.put("/api/projects/" + id, projectData);
+    },
     saveProject: function (projectData) {
         return axios.post("/api/projects", projectData);
     },
@@ -16,7 +19,7 @@ export default {
         return axios.post("/api/user/register", userData);
     },
     loginUser: function () {
-        return axios.post("/api/user/login", {username, password});
+        return axios.post("/api/user/login", { username, password });
     },
 
 };
