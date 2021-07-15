@@ -15,7 +15,10 @@ passport.deserializeUser(function (id, done) {
         console.log('----Deserialize User called----');
         console.log(user);
         done(null, user);
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7a0c8620a100122491be185036d36a306bd12b6a
     })
     // User.findOne({ _id: id }, (err, user) => {
     //     console.log('----Deserialize User called----');
