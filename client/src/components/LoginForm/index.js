@@ -72,10 +72,10 @@ function SignIn() {
         // })
         axios.post("/api/user/login", { username: loginUsername, password: loginPassword })
         .then((res) => {
-            if (res.data.redirect === '/') {
-                window.location = "/"
+            if (res.data.redirect === '/landing') {
+                window.location = "/landing";
             } else if (res.data.redirect === '/login'){
-                window.location = "/login"
+                window.location = "/login";
             }
         });
 
