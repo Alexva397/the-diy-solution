@@ -52,7 +52,7 @@ router.post('/register', (req, res) => {
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
     if (req.user) {
-        const redir = { redirect: "/" };
+        const redir = { redirect: '/landing' };
         return res.json(redir);
   } else {
         const redir = { redirect: '/login'};
@@ -63,9 +63,14 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
 
 
 // get user object for state
-router.get('/getuser', (req, res) => {
-    console.log(req.user)
+router.get('/user', (req, res) => {
+    console.log(req.user);
     res.send(req.user);
+    if (req.user) {
+        res.json({ user: req.user });
+    } else {
+        res.json({ user: null });
+    }
 });
 
 router.get('/logout', function(req, res){

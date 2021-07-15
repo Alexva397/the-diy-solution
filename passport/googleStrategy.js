@@ -12,14 +12,31 @@ const googleStrategy = new GoogleStrategy(
     function (accessToken, refreshToken, profile, done) {
         // let dispName = profile.dispalyName;
         // let googleUsername = dispName.replace(/\s+/g, '');
-        console.log(profile)
-        const { id, dispalyName } = profile;
+        const { id, displayName } = profile;
 
-        console.log()
-        // User.findOrCreate({ googleId: profile.id }, function(err, user) {
-        //     return done(err, user);
-        // })
-        return done(null, profile);
+        User.findOne({ googleId: id }, (err, isMatch) => {
+            if (err) {
+                return done(null, false);
+            }
+            if (isMatch) {
+                return done(null, isMatch);
+            } else {
+                console.log(id)
+                console.log(profile)
+                const newGoogleUser = new User({
+                    googleId: id,
+                    username: displayName.replace(/\s+/g, ''),
+                });
+                newGoogleUser.save((err, newUser) => {
+                    if (err) {
+                        return done(null, false);
+                    } else {
+                        return done(null, newUser);
+                    }
+                });
+            }
+        });
+        // return done(null, profile);
     }
 )
 
