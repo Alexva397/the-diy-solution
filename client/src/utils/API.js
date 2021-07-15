@@ -9,7 +9,7 @@ export default {
     getProject: function (id) {
         return axios.get("/api/projects/" + id);
     },
-    saveProject: function (projectData) {
+    saveProject: function (id, projectData) {
         return axios.post("/api/projects", projectData);
     },
     registerUser: function (userData) {

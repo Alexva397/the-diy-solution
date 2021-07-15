@@ -112,7 +112,7 @@ function Detail() {
             </TabPanel>
             <TabPanel value={value} index={1}>
 
-                <Materials key={project.title} materials={project.materials} />
+                <Materials key={project.title} materials={project.materials}/>
 
 
             </TabPanel>
