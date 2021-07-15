@@ -22,9 +22,9 @@ module.exports = {
   update: function (req, res) {
     db.Project
       .findOneAndUpdate(
-        req.params.id,
+        { _id: req.params.id },
         { $push: { materials: req.body.materials } },
-        { new: true, runValidators: true }
+        { new: true }
       )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
