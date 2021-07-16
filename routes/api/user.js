@@ -71,8 +71,10 @@ router.get('/user', (req, res) => {
 });
 
 router.get('/logout', function (req, res) {
-    req.logout();
-    res.redirect('/');
+    if (req.user) {
+        req.logout();
+        res.send('logged out');
+    }
 });
 
 // ------------------ Googule 0auth2.0 routes ----------------------

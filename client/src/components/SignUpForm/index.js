@@ -68,8 +68,10 @@ function SignUp() {
             password: password,
         }
         API.registerUser(newUser)
-            .then(() => {
-                window.location = "/landing";
+            .then((res) => {
+                if (res.data) {
+                    window.location = "/landing";
+                }
             })
     }
 

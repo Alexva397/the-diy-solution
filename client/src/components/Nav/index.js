@@ -12,6 +12,7 @@ import {
 import MenuIcon from "@material-ui/icons/Menu";
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import API from "../../utils/API";
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -57,6 +58,15 @@ export default function Nav() {
   });
 
   const { mobileView, drawerOpen } = state;
+
+  const logout = () => {
+    API.logoutUser()
+      .then((res) => {
+        if (res.data) {
+          window.location = "/";
+        }
+      }) 
+  };
 
   useEffect(() => {
     const setResponsiveness = () => {
@@ -116,12 +126,13 @@ export default function Nav() {
             </Button>}
           {isLoggedIn &&
             <Button
+              onClick={logout}
               {...{
                 key: "logout",
                 color: "inherit",
-                to: "/logout",
-                component: RouterLink,
-                className: menuButton
+                // to: "/logout",
+                // component: RouterLink,
+                className: menuButton,
               }}
             >
               Logout
@@ -198,12 +209,14 @@ export default function Nav() {
               </Link>}
             {isLoggedIn &&
               <Link
+                onClick={logout}
                 {...{
-                  component: RouterLink,
-                  to: "/logout",
+                  // component: RouterLink,
+                  // to: "/logout",
                   color: "inherit",
                   style: { textDecoration: "none" },
                   key: "logout",
+                  // onClick: {logout}
                 }}
               >
                 <MenuItem>Logout</MenuItem>

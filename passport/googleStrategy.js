@@ -14,7 +14,7 @@ const googleStrategy = new GoogleStrategy(
 
         User.findOne({ googleId: id }, (err, isMatch) => {
             if (err) {
-                return done(null, false);
+                return done(err, false);
             }
             if (isMatch) {
                 return done(null, isMatch);
@@ -27,13 +27,29 @@ const googleStrategy = new GoogleStrategy(
                 });
                 newGoogleUser.save((err, newUser) => {
                     if (err) {
-                        return done(null, false);
+                        return done(err, false);
                     } else {
                         return done(null, newUser);
                     }
                 });
             }
         });
+        // User.findOne({ googleId: id }, (err, isMatch) => {
+        //     if (err) {
+        //         return done(err, null);
+        //     }
+
+        //     if (!isMatch) {
+        //         const newUser = new User({
+        //             googleId: id,
+        //             username: displayName.replace(/\s+/g, ''),
+        //         });
+
+        //         newUser.save();
+        //         done(null, newUser);
+        //     }
+        //     done((null, isMatch))
+        // });
     }
 )
 
