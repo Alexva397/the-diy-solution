@@ -60,15 +60,6 @@ function SignIn() {
     const handleSubmit = e => {
         e.preventDefault();
 
-        // axios({
-        //     method: "POST",
-        //     data: {
-        //         username: loginUsername,
-        //         password: loginPassword,
-        //     },
-        //     withCredentials: true,
-        //     url: "http://localhost:3000/api/user/login",
-        // })
         axios.post("/api/user/login", { username: loginUsername, password: loginPassword })
         .then((res) => {
             if (res.data.redirect === "/landing") {

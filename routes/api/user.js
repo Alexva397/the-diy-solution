@@ -60,14 +60,14 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
 
 
 // get user object for state
-router.get('/user', (req, res) => {
+router.get('/getuser', (req, res) => {
     console.log(req.user);
     res.send(req.user);
-    if (req.user) {
-        res.json({ user: req.user });
-    } else {
-        res.json({ user: null });
-    }
+    // if (req.user) {
+    //     res.json({ user: req.user });
+    // } else {
+    //     res.json({ user: null });
+    // }
 });
 
 router.get('/logout', function (req, res) {
