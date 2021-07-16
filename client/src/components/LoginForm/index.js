@@ -57,24 +57,14 @@ function SignIn() {
         window.open("http://localhost:3001/api/user/auth/google", "_self");
     }
 
-
     const handleSubmit = e => {
         e.preventDefault();
 
-        // axios({
-        //     method: "POST",
-        //     data: {
-        //         username: loginUsername,
-        //         password: loginPassword,
-        //     },
-        //     withCredentials: true,
-        //     url: "http://localhost:3000/api/user/login",
-        // })
         axios.post("/api/user/login", { username: loginUsername, password: loginPassword })
         .then((res) => {
-            if (res.data.redirect === '/landing') {
+            if (res.data.redirect === "/landing") {
                 window.location = "/landing";
-            } else if (res.data.redirect === '/login'){
+            } else if (res.data.redirect === "/login"){
                 window.location = "/login";
             }
         });

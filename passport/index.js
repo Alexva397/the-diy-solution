@@ -4,23 +4,17 @@ const googleStrategy = require('./googleStrategy');
 const User = require('../models/user');
 
 
-passport.serializeUser(function (user, done) {
+passport.serializeUser((user, done) => {
     console.log('----Serialize User called----');
-    console.log(user);
-    done(null, { _id: user._id });
+    console.log(user._id);
+    done(null, user._id );
 });
 
-passport.deserializeUser(function (id, done) {
-    User.findOne(id, (err, user) => {
-        console.log('----Deserialize User called----');
-        console.log(user);
-        done(null, user);
+passport.deserializeUser((id, done) => {
+    User.findById(id, (err, doc) => {
+        console.log('---Deserialize doc called----');
+       return done(null, doc); 
     })
-    // User.findOne({ _id: id }, (err, user) => {
-    //     console.log('----Deserialize User called----');
-    //     console.log(user);
-    //     done(null, { _id: user._id });
-    // })
 });
 
 passport.use('google', googleStrategy);
