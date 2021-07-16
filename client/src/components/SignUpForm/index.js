@@ -53,7 +53,9 @@ function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-
+    const googleLogin = () => {
+        window.open("http://localhost:3001/api/user/auth/google", "_self");
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -137,6 +139,10 @@ function SignUp() {
                         </Grid>
                     </Grid>
                 </form>
+                <Button 
+                    onClick={googleLogin}
+                >Login with Google
+                </Button>
             </div>
             <Box mt={5}>
                 <Copyright />

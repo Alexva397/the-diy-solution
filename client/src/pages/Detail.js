@@ -79,11 +79,6 @@ function Detail() {
             .catch(err => console.log(err));
     }, [id])
 
-    console.log("project", project);
-
-    console.log("title", project.title);
-    console.log("materials", project.materials)
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -112,7 +107,7 @@ function Detail() {
             </TabPanel>
             <TabPanel value={value} index={1}>
 
-                <Materials key={project.title} materials={project.materials} />
+                <Materials key={project.title} materials={project.materials}/>
 
 
             </TabPanel>

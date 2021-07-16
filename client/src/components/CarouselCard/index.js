@@ -5,13 +5,13 @@ import React from 'react';
 // =========================================================   
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import "./carousel.css";
 // Import Media
 // =========================================================   
 import backyardBA from "../../assets/images/backyardBA.jpeg";
 import bathroomBA from "../../assets/images/bathroomBA.jpeg";
 import beforeAfter from "../../assets/images/beforeAfter.jpeg";
-
+​
+​
 const imagesArray = [
   {
     alt: "before and after",
@@ -42,7 +42,7 @@ export default function CarouselCard() {
     >
       {imagesArray.map((image, i) => {
         return (
-          <div className="BA" key={i}>
+          <div key={i}>
             <p>{image.alt}</p>
             <img alt={image.alt} src={image.img} />
           </div>
