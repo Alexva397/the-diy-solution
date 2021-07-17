@@ -1,0 +1,31 @@
+.list-item-div {
+	background-color: #afdcdf;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	width: 30%;
+	border-radius: 2px;
+	box-shadow: 0px 2px 2px #818181;
+	text-align: left;
+}
+
+.project-link {
+	text-decoration: none;
+	color: black;
+}
+
+.project-link h1 {
+	padding-top: 15px;
+	padding-left: 10px;
+	-webkit-text-stroke: 0.px rgb(0, 0, 0);
+	/* text-shadow: 0px 2px 2px #131313; */
+	color: white;
+}
+
+.project-description {
+	padding-bottom: 15px;
+	padding-top: 10px;
+	padding-left: 10px;
+
+	background-color: #aaaaaa80;
+}

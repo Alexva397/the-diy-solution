@@ -25,10 +25,7 @@ module.exports = {
         { _id: req.params.id },
         {
           $push: {
-            materials: req.body.materials,
-            before: req.body.before,
-            progress: req.body.progress,
-            after: req.body.after
+            materials: req.body.materials
           }
         },
 
