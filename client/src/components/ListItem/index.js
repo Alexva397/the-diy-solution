@@ -1,17 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import './styles.css'
 function ListItem({title,description,id}) {
     return (
-        <div>
-            <Link to={"/landing/" + id}>
+        <div class="list-item-div">
+            <Link class="project-link" to={"/landing/" + id}>
                       <h1>
                         {title}
                       </h1>
                     </Link>
-            <br/>
-            <h3>{description}</h3>
-            <br/>
+            <h3 class="project-description">{description}</h3>
         </div>
     )
 }

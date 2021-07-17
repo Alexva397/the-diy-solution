@@ -14,11 +14,9 @@ function Hero() {
       {/* <Player>
       <source src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4" />
     </Player> */}
-      <h1>Your All-in-One Home Project Management Solution</h1>
+      <h1>Your All-in-One <br></br> Home Project Management Solution</h1>
       <h3>Save Money. Improve Value. Get Organized.</h3>
-      <p>Easy to use smart applications, content and data to manage your home
-          for insurance, maintenance, remodeling, and financial purposes. It is
-          time to manage your largest asset!</p>
+      <p>Easy to use management system for all your home projects. <br></br> Use it for insurance, maintenance, remodeling, and financial purposes. <br></br> It is time to manage your largest asset!</p>
     </div>
   );
 }

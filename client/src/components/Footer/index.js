@@ -11,17 +11,16 @@ import Link from "@material-ui/core/Link";
 export default function Footer() {
   return (
     <footer>
-      <Box
+      <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
-        bgcolor="text.secondary"
+        bgcolor="#173e43"
         color="white"
-        textAlign="center"
       >
         <Container maxWidth="lg">
-          <Grid container spacing={5}>
+          <Grid>
             <Grid item xs={12} sm={4}>
-              <Box textAlign="center" borderBottom={1}>Help</Box>
+              <Box borderBottom={1}>Help</Box>
               <Box>
                 <Link href="/" color="inherit">
                   Contact
@@ -41,7 +40,7 @@ export default function Footer() {
           </Grid>
           <Grid item xs={12} sm={4}>
             <Grid>
-              <Box textAlign="center" borderBottom={1}>Account</Box>
+              <Box borderBottom={1}>Account</Box>
               <Box>
                 <Link href="/" color="inherit">
                   Login
@@ -54,6 +53,48 @@ export default function Footer() {
               </Box>
             </Grid>
           </Grid>
+          <div class='social-icons'>
+            <Link
+              class='social-icon-link facebook'
+              to='/'
+              target='_blank'
+              aria-label='Facebook'
+            >
+              <i class='fab fa-facebook-f' />
+            </Link>
+            <Link
+              class='social-icon-link instagram'
+              to='/'
+              target='_blank'
+              aria-label='Instagram'
+            >
+              <i class='fab fa-instagram' />
+            </Link>
+            <Link
+              class='social-icon-link youtube'
+              to='/'
+              target='_blank'
+              aria-label='Youtube'
+            >
+              <i class='fab fa-youtube' />
+            </Link>
+            <Link
+              class='social-icon-link twitter'
+              to='/'
+              target='_blank'
+              aria-label='Twitter'
+            >
+              <i class='fab fa-twitter' />
+            </Link>
+            <Link
+              class='social-icon-link twitter'
+              to='/'
+              target='_blank'
+              aria-label='LinkedIn'
+            >
+              <i class='fab fa-linkedin' />
+            </Link>
+          </div>
           <Box textAlign="center" pt={{ xs: 5, sm: 10 }} pb={{ xs: 5, sm: 0 }}>
             The DIY Solution &reg; {new Date().getFullYear()}
           </Box>
