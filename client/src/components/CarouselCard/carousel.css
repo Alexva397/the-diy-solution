@@ -1,0 +1,7 @@
+.BA {
+    background-color: blueviolet;
+    width: 150px;
+    height: 150px;
+    flex: auto;
+    position: absolute;
+}

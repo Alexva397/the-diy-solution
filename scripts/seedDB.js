@@ -22,64 +22,6 @@ const projectSeed = [
         purchasePrice: 480
       },
     ],
-    before: [
-      {
-        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
-      }
-    ],
-    progress: [
-      {
-        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
-      }
-    ],
-    after: [
-      {
-        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
-      }
-    ],
-    docs: [
-      {
-        receipts: [
-          {
-            1: 'https://makereceipt.com/impImages/restaurantCreditDefault.jpg'
-          },
-          {
-            2: 'https://i.pinimg.com/474x/89/7b/96/897b96d3dae8f52beb36d1f58193343b.jpg'
-          }
-        ],
-        manuals: [
-          {
-            1: 'How To Build a Cottage'
-          }
-        ],
-        contractor: [
-          {
-            name: 'Katy Chadwell'
-          },
-          {
-            phone: 555 - 555 - 5555
-          }
-        ]
-      }
-    ]
   },
   {
     title: 'Half-Bath Renovation',
@@ -96,64 +38,6 @@ const projectSeed = [
         purchasePrice: 35
       }
     ],
-    before: [
-      {
-        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
-      }
-    ],
-    progress: [
-      {
-        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
-      }
-    ],
-    after: [
-      {
-        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
-      },
-      {
-        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
-      }
-    ],
-    docs: [
-      {
-        receipts: [
-          {
-            1: 'https://makereceipt.com/impImages/restaurantCreditDefault.jpg'
-          },
-          {
-            2: 'https://i.pinimg.com/474x/89/7b/96/897b96d3dae8f52beb36d1f58193343b.jpg'
-          }
-        ],
-        manuals: [
-          {
-            1: 'Installing new faucet'
-          }
-        ],
-        contractor: [
-          {
-            name: 'Katy Chadwell'
-          },
-          {
-            phone: 555 - 555 - 5555
-          }
-        ]
-      }
-    ]
   }
 ];
 

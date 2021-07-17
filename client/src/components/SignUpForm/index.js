@@ -10,7 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import GoogleButton from "react-google-button";
+import { GoogleLoginButton, FacebookLoginButton } from "react-social-login-buttons";
 import API from "../../utils/API";
 
 function Copyright() {
@@ -59,6 +59,10 @@ function SignUp() {
 
     const googleLogin = () => {
         window.open("http://localhost:3001/api/user/auth/google", "_self");
+    }
+
+    const facebookLogin = () => {
+        window.open("http://localhost:3001/api/user/auth/facebook", "_self");
     }
 
     const handleSubmit = e => {
@@ -148,10 +152,13 @@ function SignUp() {
                         </Grid>
                     </Grid>
                 </form>
-                <GoogleButton
-                    className={classes.googleBtn}
-                    type="light" // can be light or dark
+                <GoogleLoginButton
+                    className={classes.socialBtn}
                     onClick={googleLogin}
+                />
+                <FacebookLoginButton 
+                    className={classes.socialBtn}
+                    onClick={facebookLogin}
                 />
             </div>
             <Box mt={5}>

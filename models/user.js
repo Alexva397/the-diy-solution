@@ -22,6 +22,10 @@ const userSchema = new Schema({
         type: String,
         required: false,
     },
+    facebookId: {
+        type: String,
+        required: false,
+    },
 });
 
 userSchema.pre('save', function(next) {

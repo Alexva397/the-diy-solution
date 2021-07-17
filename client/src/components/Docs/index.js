@@ -1,8 +1,10 @@
 import React from "react";
 
+import underConstruction from "../../assets/images/underConstruction.jpg";
+
 function Docs() {
     return (
-        <p>Docs</p>
+        <img src={underConstruction} />
     )
 }
 

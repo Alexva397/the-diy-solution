@@ -71,7 +71,7 @@ router.get('/logout', function (req, res) {
     }
 });
 
-// ------------------ Googule 0auth2.0 routes ----------------------
+// ------------------ Google 0auth2.0 routes ----------------------
 
 router.get('/auth/google',
     passport.authenticate('google', { scope: ['profile'] }));
@@ -82,5 +82,16 @@ router.get('/auth/google/callback',
         // Successful authentication, redirect home.
         res.redirect('http://localhost:3000/landing');
     });
+
+// ------------------ Facebook routes ----------------------
+
+router.get('/auth/facebook',
+    passport.authenticate('facebook'));
+
+router.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function (req, res) {
+        res.redirect('http://localhost:3000/landing');
+});
 
 module.exports = router;
