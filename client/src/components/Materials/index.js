@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -52,6 +52,7 @@ function Materials({ key, materials }) {
             .catch(err => console.log(err));
     };
     console.log(formObject)
+
 
     return (
         <>

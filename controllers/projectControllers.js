@@ -24,13 +24,7 @@ module.exports = {
       .findOneAndUpdate(
         { _id: req.params.id },
         {
-<<<<<<< HEAD
-          $push: {
-            materials: req.body.materials
-          }
-=======
           $push: { materials: req.body.materials }
->>>>>>> 784731b37c09f0d44513ae3be29edabf714d0d90
         },
 
         { new: true }
