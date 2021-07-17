@@ -5,10 +5,12 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
+import Grid from "@material-ui/core/Grid";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import GoogleButton from "react-google-button";
 // import API from "../../utils/API";
 import axios from "axios";
 
@@ -44,6 +46,9 @@ const useStyles = makeStyles((theme) => ({
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
+    googleBtn: {
+        marginTop: "1em",
+    },
 }));
 
 function SignIn() {
@@ -57,24 +62,14 @@ function SignIn() {
         window.open("http://localhost:3001/api/user/auth/google", "_self");
     }
 
-
     const handleSubmit = e => {
         e.preventDefault();
 
-        // axios({
-        //     method: "POST",
-        //     data: {
-        //         username: loginUsername,
-        //         password: loginPassword,
-        //     },
-        //     withCredentials: true,
-        //     url: "http://localhost:3000/api/user/login",
-        // })
         axios.post("/api/user/login", { username: loginUsername, password: loginPassword })
         .then((res) => {
-            if (res.data.redirect === '/landing') {
+            if (res.data.redirect === "/landing") {
                 window.location = "/landing";
-            } else if (res.data.redirect === '/login'){
+            } else if (res.data.redirect === "/login"){
                 window.location = "/login";
             }
         });
@@ -126,11 +121,19 @@ function SignIn() {
                     >
                         Sign In
                     </Button>
+                    <Grid container justifycontent="flex-end">
+                        <Grid item>
+                            <Link href="/signup" variant="body2">
+                                First time? Click here to sign up.
+                            </Link>
+                        </Grid>
+                    </Grid>
                 </form>
-                <Button 
+                <GoogleButton
+                className={classes.googleBtn}
+                    type="light" // can be light or dark
                     onClick={googleLogin}
-                >Login with Google
-                </Button>
+                />
             </div>
             <Box mt={8}>
                 <Copyright />

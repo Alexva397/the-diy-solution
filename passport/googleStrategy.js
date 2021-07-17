@@ -10,13 +10,11 @@ const googleStrategy = new GoogleStrategy(
         callbackURL: 'http://localhost:3001/api/user/auth/google/callback',
     },
     function (accessToken, refreshToken, profile, done) {
-        // let dispName = profile.dispalyName;
-        // let googleUsername = dispName.replace(/\s+/g, '');
         const { id, displayName } = profile;
 
         User.findOne({ googleId: id }, (err, isMatch) => {
             if (err) {
-                return done(null, false);
+                return done(err, false);
             }
             if (isMatch) {
                 return done(null, isMatch);
@@ -29,14 +27,29 @@ const googleStrategy = new GoogleStrategy(
                 });
                 newGoogleUser.save((err, newUser) => {
                     if (err) {
-                        return done(null, false);
+                        return done(err, false);
                     } else {
                         return done(null, newUser);
                     }
                 });
             }
         });
-        // return done(null, profile);
+        // User.findOne({ googleId: id }, (err, isMatch) => {
+        //     if (err) {
+        //         return done(err, null);
+        //     }
+
+        //     if (!isMatch) {
+        //         const newUser = new User({
+        //             googleId: id,
+        //             username: displayName.replace(/\s+/g, ''),
+        //         });
+
+        //         newUser.save();
+        //         done(null, newUser);
+        //     }
+        //     done((null, isMatch))
+        // });
     }
 )
 
