@@ -53,7 +53,6 @@ function Materials({ key, materials }) {
     };
     console.log(formObject)
 
-
     return (
         <>
             <form className={classes.root} noValidate autoComplete="off">

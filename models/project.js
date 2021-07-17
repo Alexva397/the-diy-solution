@@ -9,16 +9,6 @@ const projectSchema = new Schema({
         budgetPrice: Number,
         purchasePrice: Number
     }],
-    before: [{
-        photo: String,
-    }],
-    progress: [{
-        progress: String,
-    }],
-    after: [{
-        after: String,
-    }],
-    docs: Array,
 
 });
 
