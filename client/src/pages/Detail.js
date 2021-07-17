@@ -107,12 +107,12 @@ function Detail() {
             </TabPanel>
             <TabPanel value={value} index={1}>
 
-                <Materials key={project.title} materials={project.materials}/>
+                <Materials key={project.title} materials={project.materials} />
 
 
             </TabPanel>
             <TabPanel value={value} index={2}>
-                <Photos />
+                <Photos key={project.title} before={project.before} progress={project.progress} after={project.after} />
             </TabPanel>
             <TabPanel value={value} index={3}>
                 <Docs />

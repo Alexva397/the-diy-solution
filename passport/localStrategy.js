@@ -6,7 +6,7 @@ const strategy = new LocalStrategy((username, password, done) => {
         if (err) {
             return done(err);
         }
-        if(!isMatch) {
+        if (!isMatch) {
             return done(null, false, { message: 'Incorrect Username' });
         }
         return isMatch.validatePassword(password, done);
