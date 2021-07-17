@@ -22,11 +22,37 @@ const projectSeed = [
         purchasePrice: 480
       },
     ],
-    photos: [
+    before: [
       {
-        before: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-        progress: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-        after: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png'
+        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
+      }
+    ],
+    progress: [
+      {
+        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
+      }
+    ],
+    after: [
+      {
+        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
       }
     ],
     docs: [
@@ -70,11 +96,37 @@ const projectSeed = [
         purchasePrice: 35
       }
     ],
-    photos: [
+    before: [
       {
-        before: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-        progress: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
-        after: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png'
+        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
+      }
+    ],
+    progress: [
+      {
+        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
+      }
+    ],
+    after: [
+      {
+        photo: 'https://reactnativecode.com/wp-content/uploads/2018/02/Default_Image_Thumbnail.png',
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/ShYtsifbBeuOCo7g7zuUvY22jW2C3Nko/IMG_0483.jpg'
+      },
+      {
+        photo: 'https://dl3.pushbulletusercontent.com/PoNUXOjAtJoAgzDebTJrWieButD36Ge4/IMG_0514.jpg'
       }
     ],
     docs: [
