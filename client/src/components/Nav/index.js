@@ -10,9 +10,10 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import API from "../../utils/API";
+import { userContext } from "../../Context";
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -50,7 +51,7 @@ const useStyles = makeStyles(() => ({
 export default function Nav() {
   const { header, logo, menuButton, toolbar, drawerContainer, iconSize } = useStyles();
 
-  const isLoggedIn = true;
+  const userObject = useContext(userContext);
 
   const [state, setState] = useState({
     mobileView: false,
@@ -65,7 +66,7 @@ export default function Nav() {
         if (res.data) {
           window.location = "/";
         }
-      }) 
+      })
   };
 
   useEffect(() => {
@@ -100,7 +101,7 @@ export default function Nav() {
           >
             Home
           </Button>
-          {!isLoggedIn &&
+          {!userObject &&
             <Button
               {...{
                 key: "login",
@@ -112,7 +113,7 @@ export default function Nav() {
             >
               Login
             </Button>}
-          {isLoggedIn &&
+          {userObject &&
             <Button
               {...{
                 key: "projects",
@@ -124,14 +125,12 @@ export default function Nav() {
             >
               Projects
             </Button>}
-          {isLoggedIn &&
+          {userObject &&
             <Button
               onClick={logout}
               {...{
                 key: "logout",
                 color: "inherit",
-                // to: "/logout",
-                // component: RouterLink,
                 className: menuButton,
               }}
             >
@@ -183,7 +182,7 @@ export default function Nav() {
             >
               <MenuItem>Home</MenuItem>
             </Link>
-            {!isLoggedIn &&
+            {!userObject &&
               <Link
                 {...{
                   component: RouterLink,
@@ -195,7 +194,7 @@ export default function Nav() {
               >
                 <MenuItem>Login</MenuItem>
               </Link>}
-            {isLoggedIn &&
+            {userObject &&
               <Link
                 {...{
                   component: RouterLink,
@@ -207,19 +206,17 @@ export default function Nav() {
               >
                 <MenuItem>Projects</MenuItem>
               </Link>}
-            {isLoggedIn &&
+            {userObject &&
               <Link
-                onClick={logout}
                 {...{
-                  // component: RouterLink,
-                  // to: "/logout",
                   color: "inherit",
                   style: { textDecoration: "none" },
                   key: "logout",
-                  // onClick: {logout}
                 }}
               >
-                <MenuItem>Logout</MenuItem>
+                <MenuItem
+                  onClick={logout}
+                >Logout</MenuItem>
               </Link>}
           </div>
         </Drawer>

@@ -10,6 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import GoogleButton from "react-google-button";
 import API from "../../utils/API";
 
 function Copyright() {
@@ -42,6 +43,9 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+    },
+    googleBtn: {
+        marginTop: "1em",
     },
 }));
 
@@ -144,10 +148,11 @@ function SignUp() {
                         </Grid>
                     </Grid>
                 </form>
-                <Button 
+                <GoogleButton
+                    className={classes.googleBtn}
+                    type="light" // can be light or dark
                     onClick={googleLogin}
-                >Login with Google
-                </Button>
+                />
             </div>
             <Box mt={5}>
                 <Copyright />
