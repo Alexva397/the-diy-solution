@@ -23,7 +23,15 @@ module.exports = {
     db.Project
       .findOneAndUpdate(
         { _id: req.params.id },
-        { $push: { materials: req.body.materials } },
+        {
+          $push: {
+            materials: req.body.materials,
+            before: req.body.before,
+            progress: req.body.progress,
+            after: req.body.after
+          }
+        },
+
         { new: true }
       )
       .then(dbModel => res.json(dbModel))
