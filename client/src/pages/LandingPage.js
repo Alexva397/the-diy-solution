@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import ListItem from '../components/ListItem'
 import API from '../utils/API'
+import { userContext } from "../Context";
 
 const useStyles = makeStyles(() => ({
     landing: {
@@ -17,8 +18,15 @@ function Landing() {
         projects: []
     });
 
+    const userObject = useContext(userContext);
+
     useEffect(() => {
-        loadProjects()
+        console.log("landingpage.js", userObject)
+        if(!userObject) {
+            // window.location = "/login";
+        } else {
+            loadProjects();
+        }
     }, [])
 
     function loadProjects() {
@@ -28,7 +36,7 @@ function Landing() {
     };
     return (
         <div className={landing}>
-            <button class="add-project">
+            <button className="add-project">
                 <span>+</span> Create a New Project
             </button>
             {state.projects.map((project) => {return <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} 

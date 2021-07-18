@@ -134,10 +134,6 @@ function SignIn() {
                         </Grid>
                     </Grid>
                 </form>
-                {/* <GoogleButton
-                    className={classes.socialBtn}
-                    onClick={googleLogin}
-                /> */}
                 <GoogleLoginButton
                     className={classes.socialBtn}
                     onClick={googleLogin}

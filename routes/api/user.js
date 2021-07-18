@@ -61,6 +61,7 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
 
 // get user object for state
 router.get('/getuser', (req, res) => {
+    console.log(req);
     res.send(req.user);
 });
 

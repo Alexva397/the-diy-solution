@@ -70,6 +70,7 @@ export default function Nav() {
   };
 
   useEffect(() => {
+    console.log(userObject)
     const setResponsiveness = () => {
       return window.innerWidth < 900
         ? setState((prevState) => ({ ...prevState, mobileView: true }))

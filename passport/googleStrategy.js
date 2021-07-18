@@ -19,8 +19,6 @@ const googleStrategy = new GoogleStrategy(
             if (isMatch) {
                 return done(null, isMatch);
             } else {
-                console.log(id)
-                console.log(profile)
                 const newGoogleUser = new User({
                     googleId: id,
                     username: displayName.replace(/\s+/g, ''),
@@ -34,22 +32,6 @@ const googleStrategy = new GoogleStrategy(
                 });
             }
         });
-        // User.findOne({ googleId: id }, (err, isMatch) => {
-        //     if (err) {
-        //         return done(err, null);
-        //     }
-
-        //     if (!isMatch) {
-        //         const newUser = new User({
-        //             googleId: id,
-        //             username: displayName.replace(/\s+/g, ''),
-        //         });
-
-        //         newUser.save();
-        //         done(null, newUser);
-        //     }
-        //     done((null, isMatch))
-        // });
     }
 )
 
