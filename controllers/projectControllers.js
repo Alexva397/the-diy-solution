@@ -1,4 +1,5 @@
 const db = require('../models');
+const mongoose = require('mongoose');
 
 module.exports = {
   findAll: function (req, res) {
@@ -9,7 +10,11 @@ module.exports = {
   },
   findById: function (req, res) {
     db.Project
-      .findById(req.params.id)
+      // .findById(req.params.id)
+      .aggregate([
+        { $match: { _id: mongoose.Types.ObjectId(req.params.id)}},
+        { $group: { _id: "$purchasePrice", purchaseTotal: { $sum: "$purchasePrice" } } }
+      ])
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
