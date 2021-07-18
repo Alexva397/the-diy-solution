@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Hero from "../components/Hero";
-import CarouselCard from "../components/CarouselCard";
 import Footer from "../components/Footer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
@@ -22,7 +21,6 @@ function Home() {
         <header></header>
         <main>
             <Hero/>
-            <CarouselCard/>
         </main>
         <Footer/>
         </>
