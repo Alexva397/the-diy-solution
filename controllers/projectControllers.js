@@ -14,7 +14,7 @@ module.exports = {
         { $match : { _id : mongoose.Types.ObjectId(req.params.id) } },
         {
           $addFields: {
-            totalBudgetCost: { $sum: "$materials.budgetPrice" },
+            totalSpent: { $sum: "$materials.purchasePrice" }
           },
         },
       ])
