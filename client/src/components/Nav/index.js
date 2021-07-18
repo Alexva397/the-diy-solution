@@ -14,6 +14,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import API from "../../utils/API";
 import { userContext } from "../../Context";
+import "./Nav.css"
 
 const useStyles = makeStyles(() => ({
   header: {
@@ -27,7 +28,7 @@ const useStyles = makeStyles(() => ({
   logo: {
     fontFamily: "Inter",
     fontWeight: 600,
-    color: "#dddfd4",
+    color: "#fff",
     textAlign: "left",
   },
   menuButton: {
@@ -35,6 +36,7 @@ const useStyles = makeStyles(() => ({
     fontWeight: 700,
     size: "18px",
     marginLeft: "38px",
+    hover: "#f7b733",
   },
   toolbar: {
     display: "flex",
@@ -45,7 +47,11 @@ const useStyles = makeStyles(() => ({
   },
   iconSize: {
     fontSize: "35px",
-  }
+    color: "#f7b733",
+  },
+  // 'menuButton:hover': {
+    
+  // }
 }));
 
 export default function Nav() {
@@ -109,7 +115,7 @@ export default function Nav() {
                 color: "inherit",
                 to: "/login",
                 component: RouterLink,
-                className: menuButton
+                className: menuButton,
               }}
             >
               Login

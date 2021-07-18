@@ -10,6 +10,7 @@ const projectSeed = [
   {
     title: 'Cottage',
     description: 'Renovation of the mother-in-law cottage.',
+    budget: 4000,
     materials: [
       {
         item: 'paint',
@@ -26,6 +27,7 @@ const projectSeed = [
   {
     title: 'Half-Bath Renovation',
     description: 'Giving the half-bath a face-lift.',
+    budget: 900,
     materials: [
       {
         item: 'Paint',
