@@ -41,6 +41,7 @@ export default function ProjectModal() {
 
   const handleClose = () => {
     setOpen(false);
+    window.location.reload();
   };
 
   const [formObject, setFormObject] = useState([]);
@@ -55,10 +56,11 @@ export default function ProjectModal() {
         console.log(formObject)
         API.saveProject({
             title: formObject.title,
-            description: formObject.description
+            description: formObject.description,
+            budget: formObject.budget
         })
             .then(res => {
-
+                handleClose();
                 console.log(res);
             })
             .catch(err => console.log(err));
@@ -84,6 +86,16 @@ export default function ProjectModal() {
                         multiline
                         onChange={handleInputChange}
                         value={formObject.description}
+                    />
+                    <br/>
+                    <TextField
+                        id="standard-textarea"
+                        label="Project Budget"
+                        name="budget"
+                        className={classes.textfield}
+                        multiline
+                        onChange={handleInputChange}
+                        value={formObject.budget}
                     />
                     <br/>
         <button class="create-button" onClick={handleFormSubmit}>Create Project</button>
