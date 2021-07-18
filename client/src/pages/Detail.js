@@ -109,7 +109,7 @@ function Detail() {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <Summary title={project.title} />
+                <Summary title={project.title} budget={project.budget} totalSpent={project.totalSpent} />
             </TabPanel>
             <TabPanel value={value} index={1}>
 
