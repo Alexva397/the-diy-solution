@@ -24,8 +24,9 @@ const useStyles = makeStyles({
     }
 });
 
-function Summary({ title }) {
+function Summary({ title, budget, totalSpent }) {
     const classes = useStyles();
+    const balance = budget - totalSpent;
 
     return (
             <Grid container>
@@ -35,14 +36,13 @@ function Summary({ title }) {
                         {title}
                     </Typography>
                     <Typography className={classes.title}>
-                        Project total: $2800
-                    </Typography>
-
-                    <Typography className={classes.title}>
-                        Cost to Date: $1200
+                        Budget: ${budget}
                     </Typography>
                     <Typography className={classes.title}>
-                        Balance: $500
+                        Cost to Date: ${totalSpent}
+                    </Typography>
+                    <Typography className={classes.title}>
+                        Balance: ${balance}
                     </Typography>
                 </Grid>              
             </Grid>
