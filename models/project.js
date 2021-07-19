@@ -11,7 +11,10 @@ const projectSchema = new Schema({
         budgetPrice: Number,
         purchasePrice: Number
     }],
-
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 const Project = mongoose.model('Project', projectSchema);

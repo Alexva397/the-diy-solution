@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     table: {
         marginTop: theme.spacing(2),
-        
+
     }
 }));
 
@@ -55,7 +55,7 @@ function Materials({ key, materials }) {
     };
     console.log(formObject)
 
-    
+
 
     return (
         <>
@@ -79,7 +79,7 @@ function Materials({ key, materials }) {
                         multiline
                         className={classes.textfield}
                         onChange={handleInputChange}
-                        value={formObject.item}
+                        value={formObject.quantity}
                     />
                     <TextField
                         id="standard-textarea"
@@ -102,7 +102,7 @@ function Materials({ key, materials }) {
                         value={formObject.budgetPrice}
                     />
                     <Button
-                        disabled={!formObject.item && formObject.budgetPrice && formObject.purchasePrice}
+                        disabled={!formObject.item && !formObject.quantity && !formObject.budgetPrice && !formObject.purchasePrice}
                         onClick={handleFormSubmit}
                         type="submit"
                         multiline
@@ -126,7 +126,6 @@ function Materials({ key, materials }) {
                     </Tr>
                 </Thead>
                 {materials.map(material => (
-
                     <Tbody>
                         <Tr>
                             <Td>{material.item}</Td>

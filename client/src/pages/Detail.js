@@ -76,10 +76,14 @@ function Detail() {
     console.log(id);
     useEffect(() => {
         API.getProject(id)
+<<<<<<< HEAD
+            .then(res => {console.log(res.data); setProject(res.data)})
+=======
             .then(res => {
                 setProject(res.data[0])
                 console.log(res.data)
             })
+>>>>>>> 975508bbd2202428f465d4ba07f99d1f8bf63ca8
             .catch(err => console.log(err));
     }, [id])
 

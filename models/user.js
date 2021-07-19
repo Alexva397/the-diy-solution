@@ -8,8 +8,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    projects: [{type: Schema.Types.ObjectId,
-                ref: 'Project'}],
+    projects: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Project'
+    }],
     email: {
         type: String,
         required: false,
@@ -28,24 +30,24 @@ const userSchema = new Schema({
     },
 });
 
-userSchema.pre('save', function(next) {
-    if(!this.isModified('password'))
+userSchema.pre('save', function (next) {
+    if (!this.isModified('password'))
         return next();
     bcrypt.hash(this.password, 10, (err, hashedPw) => {
-        if(err)
+        if (err)
             return next(err);
         this.password = hashedPw;
         next();
     });
 });
 
-userSchema.methods.validatePassword = function(plaintextPassword, done) {
+userSchema.methods.validatePassword = function (plaintextPassword, done) {
     bcrypt.compare(plaintextPassword, this.password, (err, result) => {
         if (err) {
             return err;
         }
         else {
-            if(!result) {
+            if (!result) {
                 return done(null, result);
             }
             return done(null, this);
