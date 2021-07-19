@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import ListItem from '../components/ListItem';
 import ProjectModal from '../components/ProjectModal'
 import API from '../utils/API'
-import { userContext } from "../Context";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -20,15 +19,8 @@ function Landing() {
         projects: []
     });
 
-    const userObject = useContext(userContext);
-
     useEffect(() => {
-        console.log("landingpage.js", userObject)
-        if(!userObject) {
-            // window.location = "/login";
-        } else {
-            loadProjects();
-        }
+        loadProjects()
     }, [])
 
     function loadProjects() {

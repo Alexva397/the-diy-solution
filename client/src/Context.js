@@ -1,53 +1,31 @@
 import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
-export const userContext = createContext({});
+export const userContext = createContext();
 
-// export { userContext };
+export default function Context ({ children }) {
 
-export default function Context(props) {
-
-    const [userObject, setUserObject] = useState();
+    const [userObject, setUserObject] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    
 
     useEffect(() => {
         
         axios.get("/api/user/getuser", { withCredentials: true })
             .then((res) => {
                 if (res.data) {
-                    // console.log(res.data);
-                    setUserObject(res.data);
-                    console.log(userObject);
+                    console.log(res.data.user);
+                    setUserObject(res.data.user);
+                    setIsAuthenticated(res.data.isAuthenticated);
                 }
-                // else {
-                //     window.location = "/login";
-                // }
             })
     }, [])
 
     return (
         <>
-            <userContext.Provider value={userObject}>{props.children}</userContext.Provider>
+            <userContext.Provider value={{ userObject, setUserObject, isAuthenticated, setIsAuthenticated }}>
+                {children}
+            </userContext.Provider>
         </>
     );
 }
-
-
-
-// const [userObject, setUserObject] = useState();
-
-// useEffect(() => {
-//     console.log(userObject);
-//     if(userObject === undefined) {
-//         axios.get("/api/user/getuser", { withCredentials: true })
-//         .then((res) => {
-//             if (res.data) {
-//                 console.log(res.data);
-//                 setUserObject(res.data);
-//                 console.log("here", userObject);
-//             }
-//             // else {
-//             //     window.location = "/login";
-//             // }
-//          })
-//     }
-// }, [userObject])
