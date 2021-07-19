@@ -78,8 +78,14 @@ function SignUp() {
         API.registerUser(newUser)
             .then((res) => {
                 if (res.data) {
-                    console.log(res.data)
-                    
+                    axios.post("/api/user/login", { username: username, password: password })
+                    .then((res) => {
+                        if (res.data.redirect === "/landing") {
+                            window.location = "/landing";
+                        } else if (res.data.redirect === "/login"){
+                            window.location = "/login";
+                        }
+                    });
                 }
             })
     }
