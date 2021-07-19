@@ -57,7 +57,7 @@ const useStyles = makeStyles(() => ({
 export default function Nav() {
   const { header, logo, menuButton, toolbar, drawerContainer, iconSize } = useStyles();
 
-  const userObject = useContext(userContext);
+ const { isAuthenticated } = useContext(userContext);
 
   const [state, setState] = useState({
     mobileView: false,
@@ -107,7 +107,7 @@ export default function Nav() {
           >
             Home
           </Button>
-          {!userObject &&
+          {!isAuthenticated &&
             <Button
               {...{
                 key: "login",
@@ -119,7 +119,7 @@ export default function Nav() {
             >
               Login
             </Button>}
-          {userObject &&
+          {isAuthenticated &&
             <Button
               {...{
                 key: "projects",
@@ -131,7 +131,7 @@ export default function Nav() {
             >
               Projects
             </Button>}
-          {userObject &&
+          {isAuthenticated &&
             <Button
               onClick={logout}
               {...{
@@ -188,7 +188,7 @@ export default function Nav() {
             >
               <MenuItem>Home</MenuItem>
             </Link>
-            {!userObject &&
+            {!isAuthenticated &&
               <Link
                 {...{
                   component: RouterLink,
@@ -200,7 +200,7 @@ export default function Nav() {
               >
                 <MenuItem>Login</MenuItem>
               </Link>}
-            {userObject &&
+            {isAuthenticated &&
               <Link
                 {...{
                   component: RouterLink,
@@ -212,7 +212,7 @@ export default function Nav() {
               >
                 <MenuItem>Projects</MenuItem>
               </Link>}
-            {userObject &&
+            {isAuthenticated &&
               <Link
                 {...{
                   color: "inherit",

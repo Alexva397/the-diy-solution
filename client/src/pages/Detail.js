@@ -69,15 +69,25 @@ function Detail() {
     const [value, setValue] = React.useState(0);
 
     const [project, setProject] = useState({
-        project: []
+        project: {}
     })
 
     const { id } = useParams()
+    console.log(id);
     useEffect(() => {
         API.getProject(id)
+<<<<<<< HEAD
             .then(res => {console.log(res.data); setProject(res.data)})
+=======
+            .then(res => {
+                setProject(res.data[0])
+                console.log(res.data)
+            })
+>>>>>>> 975508bbd2202428f465d4ba07f99d1f8bf63ca8
             .catch(err => console.log(err));
     }, [id])
+
+    console.log(project);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -103,7 +113,7 @@ function Detail() {
                 </Tabs>
             </AppBar>
             <TabPanel value={value} index={0}>
-                <Summary title={project.title} />
+                <Summary title={project.title} budget={project.budget} totalSpent={project.totalSpent} />
             </TabPanel>
             <TabPanel value={value} index={1}>
 

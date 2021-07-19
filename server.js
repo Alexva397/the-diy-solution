@@ -27,7 +27,7 @@ app.use(session({
 }));
 
 
-app.use(cookieParser('supersecret'));
+app.use(cookieParser(process.env.SESS_SECRET || 'supersecret'));
 
 app.use(passport.initialize());
 app.use(passport.session());

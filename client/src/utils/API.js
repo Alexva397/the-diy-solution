@@ -18,10 +18,8 @@ export default {
     registerUser: function (userData) {
         return axios.post("/api/user/register", userData);
     },
-    loginUser: function () {
-        return axios.post("/api/user/login", { username, password });
-    },
     logoutUser: function () {
         return axios.get("/api/user/logout");
     }
+
 };

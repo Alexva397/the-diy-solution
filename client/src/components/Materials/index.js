@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(3)
     },
     table: {
-        marginTop: theme.spacing(3)
+        marginTop: theme.spacing(2),
+        
     }
 }));
 
@@ -41,6 +42,7 @@ function Materials({ key, materials }) {
         API.updateProject(id, {
             materials: {
                 item: formObject.item,
+                quantity: formObject.quantity,
                 budgetPrice: formObject.budgetPrice,
                 purchasePrice: formObject.purchasePrice
             }
@@ -53,6 +55,7 @@ function Materials({ key, materials }) {
     };
     console.log(formObject)
 
+    
 
     return (
         <>
@@ -70,13 +73,13 @@ function Materials({ key, materials }) {
                     />
                     <TextField
                         id="standard-textarea"
-                        label="Budget Price"
-                        name="budgetPrice"
+                        label="Quantity"
+                        name="quantity"
                         placeholder="Placeholder"
                         multiline
                         className={classes.textfield}
                         onChange={handleInputChange}
-                        value={formObject.budgetPrice}
+                        value={formObject.item}
                     />
                     <TextField
                         id="standard-textarea"
@@ -87,6 +90,16 @@ function Materials({ key, materials }) {
                         className={classes.textfield}
                         onChange={handleInputChange}
                         value={formObject.purchasePrice}
+                    />
+                    <TextField
+                        id="standard-textarea"
+                        label="Budget Price"
+                        name="budgetPrice"
+                        placeholder="Placeholder"
+                        multiline
+                        className={classes.textfield}
+                        onChange={handleInputChange}
+                        value={formObject.budgetPrice}
                     />
                     <Button
                         disabled={!formObject.item && formObject.budgetPrice && formObject.purchasePrice}
@@ -106,8 +119,10 @@ function Materials({ key, materials }) {
                 <Thead>
                     <Tr>
                         <Th>Item Name</Th>
-                        <Th>Budget Price</Th>
+                        <Th>Quantity</Th>
                         <Th>Purchase Price</Th>
+                        <Th>Budget Price</Th>
+                        <Th>Saved</Th>
                     </Tr>
                 </Thead>
                 {materials.map(material => (
@@ -115,8 +130,10 @@ function Materials({ key, materials }) {
                     <Tbody>
                         <Tr>
                             <Td>{material.item}</Td>
-                            <Td>{material.budgetPrice}</Td>
-                            <Td>{material.purchasePrice}</Td>
+                            <Td>{material.quantity}</Td>
+                            <Td>${material.purchasePrice}</Td>
+                            <Td>${material.budgetPrice}</Td>
+                            <Td>${material.budgetPrice - material.purchasePrice}</Td>
                         </Tr>
                     </Tbody>
                 ))}
