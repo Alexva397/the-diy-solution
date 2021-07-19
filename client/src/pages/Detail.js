@@ -75,7 +75,7 @@ function Detail() {
     const { id } = useParams()
     useEffect(() => {
         API.getProject(id)
-            .then(res => setProject(res.data))
+            .then(res => {console.log(res.data); setProject(res.data)})
             .catch(err => console.log(err));
     }, [id])
 
