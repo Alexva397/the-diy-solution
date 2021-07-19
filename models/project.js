@@ -7,6 +7,7 @@ const projectSchema = new Schema({
     budget: Number,
     materials: [{
         item: String,
+        quantity: Number,
         budgetPrice: Number,
         purchasePrice: Number
     }],
