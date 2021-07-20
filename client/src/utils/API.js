@@ -15,6 +15,12 @@ export default {
     saveProject: function (projectData) {
         return axios.post("/api/projects", projectData);
     },
+    deleteProject: function (id) {
+        return axios.delete("/api/projects/" + id);
+    },
+    removeMaterial: function (id, material) {
+        return axios.put("/api/materials/" + id, material)
+    },
     registerUser: function (userData) {
         return axios.post("/api/user/register", userData);
     },

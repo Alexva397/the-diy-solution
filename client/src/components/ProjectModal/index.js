@@ -49,7 +49,7 @@ export default function ProjectModal() {
     setOpen(false);
     window.location.reload();
   };
-
+  
   const [formObject, setFormObject] = useState([]);
 
     function handleInputChange(event) {
@@ -69,9 +69,10 @@ export default function ProjectModal() {
         })
             .then(res => {
                 handleClose();
-                console.log(res);
+                console.log('res: ', res);
             })
             .catch(err => console.log(err));
+          
     };
   const body = (
     <div style={modalStyle} className={classes.paper}>

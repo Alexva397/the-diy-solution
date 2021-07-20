@@ -42,6 +42,12 @@ function Landing() {
         }        
     }, [isAuthenticated])
 
+    function deleteProject(id){
+		API.deleteProject(id)
+		.then(res => loadProjects())
+		.catch(err => console.log(err));
+	  };
+
     function loadProjects() {
         API.getProjects()
             .then(res => { console.log(res.data); setState({projects: res.data})})
@@ -54,7 +60,7 @@ function Landing() {
             </div>
             
             {state.projects.map((project) => {return <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} 
-            materials={project.materials} photos={project.photos} docs={project.docs}></ListItem>})} 
+            materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)}></ListItem>})} 
         </div>        
     )
 }
