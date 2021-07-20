@@ -49,9 +49,7 @@ export default function ProjectModal() {
     setOpen(false);
     // window.location.reload();
   };
-
-  const { userObject } = useContext(userContext);
-
+  
   const [formObject, setFormObject] = useState([]);
 
     function handleInputChange(event) {

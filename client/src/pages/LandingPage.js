@@ -23,43 +23,24 @@ function Landing() {
         projects: [],
         username: '',
         isLoggedIn: false,
-
     });
 
     useEffect(() => {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        
-        if (isAuthenticated) {
-            
-            setState({ ...state, 
-                projects: userObject.projects,
-=======
-=======
-        console.log(isAuthenticated);
->>>>>>> 841d998473a20b1314c6308bcabbd19a3d6abd78
         if (isAuthenticated) {
             setState({ ...state, 
->>>>>>> 727dd1e131cfd3ce081822395fc9ef2a43956f35
                 userId: userObject._id,
                 username: userObject.username,
                 isLoggedIn: true,
-<<<<<<< HEAD
-            })
-<<<<<<< HEAD
-            loadProjects();
-        }
-=======
-        loadProjects()
-        }        
->>>>>>> 727dd1e131cfd3ce081822395fc9ef2a43956f35
-    }, [])
-=======
             });
             loadProjects();
         }        
     }, [isAuthenticated])
->>>>>>> 841d998473a20b1314c6308bcabbd19a3d6abd78
+
+    function deleteProject(id){
+		API.deleteProject(id)
+		.then(res => loadProjects())
+		.catch(err => console.log(err));
+	  };
 
     function loadProjects() {
         API.getProjects()
@@ -73,7 +54,7 @@ function Landing() {
             </div>
             
             {state.projects.map((project) => {return <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} 
-            materials={project.materials} photos={project.photos} docs={project.docs}></ListItem>})} 
+            materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)}></ListItem>})} 
         </div>        
     )
 }
