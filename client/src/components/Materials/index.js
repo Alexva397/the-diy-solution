@@ -37,7 +37,6 @@ function Materials({ key, materials }) {
 
     const { id } = useParams();
     function handleFormSubmit(event) {
-
         console.log(formObject)
         API.updateProject(id, {
             materials: {
@@ -55,7 +54,14 @@ function Materials({ key, materials }) {
     };
     console.log(formObject)
 
-
+    function handleMaterialDelete (id, materialId) {
+        console.log(materialId);
+        API.removeMaterial(id, {
+            materials: {
+                _id: materialId
+            }
+        })
+    }
 
     return (
         <>
@@ -123,6 +129,8 @@ function Materials({ key, materials }) {
                         <Th>Purchase Price</Th>
                         <Th>Budget Price</Th>
                         <Th>Saved</Th>
+                        {/* Add after adding routes for materials */}
+                        <Th></Th>
                     </Tr>
                 </Thead>
                 {materials.map(material => (
@@ -133,6 +141,10 @@ function Materials({ key, materials }) {
                             <Td>${material.purchasePrice}</Td>
                             <Td>${material.budgetPrice}</Td>
                             <Td>${material.budgetPrice - material.purchasePrice}</Td>
+                            {/* Add after adding routes for materials */}
+                            <Td>
+                                <Button class="delete-material" onClick={() => handleMaterialDelete(id, material._id)}>Remove</Button>
+                            </Td>
                         </Tr>
                     </Tbody>
                 ))}
