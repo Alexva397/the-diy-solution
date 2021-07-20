@@ -1,11 +1,12 @@
 const db = require('../models');
 const mongoose = require('mongoose');
+const auth = require('../utils/auth');
 
 module.exports = {
   findAll: function (req, res) {
-    console.log(req)
+    console.log(req);
     db.Project
-      .find({ userId: req.user }).sort({ _id: 1 })
+      .find({ userId: req.user._id }).sort({ _id: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

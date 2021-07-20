@@ -27,15 +27,16 @@ function Landing() {
     });
 
     useEffect(() => {
+        console.log(isAuthenticated);
         if (isAuthenticated) {
             setState({ ...state, 
                 userId: userObject._id,
                 username: userObject.username,
                 isLoggedIn: true,
-            })
-        loadProjects()
+            });
+            loadProjects();
         }        
-    }, [])
+    }, [isAuthenticated])
 
     function loadProjects() {
         API.getProjects()
