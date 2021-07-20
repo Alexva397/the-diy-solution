@@ -27,17 +27,27 @@ function Landing() {
     });
 
     useEffect(() => {
+<<<<<<< HEAD
         
         if (isAuthenticated) {
             
             setState({ ...state, 
                 projects: userObject.projects,
+=======
+        if (isAuthenticated) {
+            setState({ ...state, 
+>>>>>>> 727dd1e131cfd3ce081822395fc9ef2a43956f35
                 userId: userObject._id,
                 username: userObject.username,
                 isLoggedIn: true,
             })
+<<<<<<< HEAD
             loadProjects();
         }
+=======
+        loadProjects()
+        }        
+>>>>>>> 727dd1e131cfd3ce081822395fc9ef2a43956f35
     }, [])
 
     function loadProjects() {
