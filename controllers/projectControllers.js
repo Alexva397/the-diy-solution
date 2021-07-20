@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 
 module.exports = {
   findAll: function (req, res) {
+    console.log(req)
     db.Project
-      .find(req.query).sort({ _id: 1 })
+      .find({ userId: req.user }).sort({ _id: 1 })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
