@@ -57,9 +57,7 @@ function Materials({ key, materials }) {
     function handleMaterialDelete (id, materialId) {
         console.log(materialId);
         API.removeMaterial(id, {
-            materials: {
                 _id: materialId
-            }
         })
     }
 
