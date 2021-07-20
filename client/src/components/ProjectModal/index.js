@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from "@material-ui/core/TextField";
 import API from '../../utils/API'
+import { userContext } from '../../Context.js';
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -41,8 +43,10 @@ export default function ProjectModal() {
 
   const handleClose = () => {
     setOpen(false);
-    window.location.reload();
+    // window.location.reload();
   };
+
+  const { userObject } = useContext(userContext);
 
   const [formObject, setFormObject] = useState([]);
 
@@ -57,13 +61,15 @@ export default function ProjectModal() {
         API.saveProject({
             title: formObject.title,
             description: formObject.description,
-            budget: formObject.budget
+            budget: formObject.budget,
+            userId: userObject._id
         })
             .then(res => {
                 handleClose();
-                console.log(res);
+                console.log('res: ', res);
             })
             .catch(err => console.log(err));
+          
     };
   const body = (
     <div style={modalStyle} className={classes.paper}>
