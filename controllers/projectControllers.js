@@ -4,7 +4,6 @@ const auth = require('../utils/auth');
 
 module.exports = {
   findAll: function (req, res) {
-    console.log(req);
     db.Project
       .find({ userId: req.user._id }).sort({ _id: 1 })
       .then(dbModel => res.json(dbModel))

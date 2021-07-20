@@ -47,7 +47,7 @@ export default function ProjectModal() {
 
   const handleClose = () => {
     setOpen(false);
-    // window.location.reload();
+    window.location.reload();
   };
 
   const [formObject, setFormObject] = useState([]);

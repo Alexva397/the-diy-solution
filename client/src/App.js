@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -13,9 +13,9 @@ import { userContext } from "./Context";
 
 function App() {
 
-  const { userObject } = useContext(userContext);
+  const { userObject, isAuthenticated  } = useContext(userContext);
 
-  console.log(userObject);
+  console.log(userObject, isAuthenticated);
 
   return (
     <>
@@ -27,16 +27,16 @@ function App() {
               <Home />
             </Route>
             <Route exact path="/login">
-              <Login />
+              {isAuthenticated ? <Redirect to="/landing" /> : <Login />}
             </Route>
             <Route exact path="/signup">
-              <Signup />
+              {isAuthenticated ? <Redirect to="/landing" /> : <Signup />}
             </Route>
             <Route exact path="/landing">
-              <Landing />
+              {isAuthenticated ? <Landing /> : <Redirect to="/login" />}
             </Route>
             <Route exact path="/landing/:id">
-              <Detail />
+              {isAuthenticated ? <Detail /> : <Redirect to="/login" />}
             </Route>
           </Switch>
         </Router>
