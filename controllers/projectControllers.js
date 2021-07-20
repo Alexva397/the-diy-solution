@@ -1,8 +1,10 @@
 const db = require('../models');
 const mongoose = require('mongoose');
+const auth = require('../utils/auth');
 
 module.exports = {
   findAll: function (req, res) {
+<<<<<<< HEAD
 <<<<<<< HEAD
     
     db.Project
@@ -11,8 +13,11 @@ module.exports = {
         res.json(dbModel))
 =======
     console.log(req)
+=======
+    console.log(req);
+>>>>>>> 841d998473a20b1314c6308bcabbd19a3d6abd78
     db.Project
-      .find({ userId: req.user }).sort({ _id: 1 })
+      .find({ userId: req.user._id }).sort({ _id: 1 })
       .then(dbModel => res.json(dbModel))
 >>>>>>> 727dd1e131cfd3ce081822395fc9ef2a43956f35
       .catch(err => res.status(422).json(err));

@@ -28,18 +28,23 @@ function Landing() {
 
     useEffect(() => {
 <<<<<<< HEAD
+<<<<<<< HEAD
         
         if (isAuthenticated) {
             
             setState({ ...state, 
                 projects: userObject.projects,
 =======
+=======
+        console.log(isAuthenticated);
+>>>>>>> 841d998473a20b1314c6308bcabbd19a3d6abd78
         if (isAuthenticated) {
             setState({ ...state, 
 >>>>>>> 727dd1e131cfd3ce081822395fc9ef2a43956f35
                 userId: userObject._id,
                 username: userObject.username,
                 isLoggedIn: true,
+<<<<<<< HEAD
             })
 <<<<<<< HEAD
             loadProjects();
@@ -49,6 +54,12 @@ function Landing() {
         }        
 >>>>>>> 727dd1e131cfd3ce081822395fc9ef2a43956f35
     }, [])
+=======
+            });
+            loadProjects();
+        }        
+    }, [isAuthenticated])
+>>>>>>> 841d998473a20b1314c6308bcabbd19a3d6abd78
 
     function loadProjects() {
         API.getProjects()

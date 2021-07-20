@@ -2,14 +2,9 @@ import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from "@material-ui/core/TextField";
-<<<<<<< HEAD
-import API from '../../utils/API'
-import { userContext } from '../../Context.js';
-=======
 import API from '../../utils/API';
 import { userContext } from "../../Context";
 
->>>>>>> 727dd1e131cfd3ce081822395fc9ef2a43956f35
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
