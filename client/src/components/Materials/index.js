@@ -37,7 +37,6 @@ function Materials({ key, materials }) {
 
     const { id } = useParams();
     function handleFormSubmit(event) {
-
         console.log(formObject)
         API.updateProject(id, {
             materials: {
@@ -79,7 +78,7 @@ function Materials({ key, materials }) {
                         multiline
                         className={classes.textfield}
                         onChange={handleInputChange}
-                        value={formObject.item}
+                        value={formObject.quantity}
                     />
                     <TextField
                         id="standard-textarea"
