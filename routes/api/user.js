@@ -1,14 +1,8 @@
 const router = require('express').Router();
 const passport = require('passport');
 const User = require('../../models/user');
+const auth = require('../../utils/auth');
 
-
-function ensureAuthenticated(req, res, next) {
-    if (req.isAuthenticated())
-        return next();
-    else
-        res.json({ error: "User not authenticated" });
-}
 
 router.post('/register', (req, res) => {
     const { username, email, password } = req.body;
@@ -47,7 +41,7 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
 
 
 // get user object for state
-router.get('/getuser', ensureAuthenticated, (req, res) => {
+router.get('/getuser', auth, (req, res) => {
     const { username, _id, projects } = req.user
     res.status(200).json({ isAuthenticated: true, user: { username, _id, projects } });
 });

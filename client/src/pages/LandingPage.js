@@ -27,20 +27,19 @@ function Landing() {
     });
 
     useEffect(() => {
+        if (isAuthenticated) {
+            setState({ ...state, 
+                userId: userObject._id,
+                username: userObject.username,
+                isLoggedIn: true,
+            })
         loadProjects()
-        // if (isAuthenticated) {
-            
-        //     setState({ ...state, 
-        //         userId: userObject._id,
-        //         username: userObject.username,
-        //         isLoggedIn: true,
-        //     })
-        // }        
+        }        
     }, [])
 
     function loadProjects() {
         API.getProjects()
-            .then(res => { console.log(res.data); setState({projects: res.data})})
+            .then(res => { console.log(res.data); setState({...state, projects: res.data})})
             .catch(err => console.log(err));
     };
     return (

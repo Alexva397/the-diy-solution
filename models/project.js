@@ -12,7 +12,7 @@ const projectSchema = new Schema({
         purchasePrice: Number
     }],
     userId: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     }
 });
