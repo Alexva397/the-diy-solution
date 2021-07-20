@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
 import ListItem from '../components/ListItem';
 import ProjectModal from '../components/ProjectModal'
 import API from '../utils/API'
-import Context from '../Context.js'
+import { userContext } from "../Context";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,12 +16,26 @@ const useStyles = makeStyles((theme) => ({
 function Landing() {
     const { root } = useStyles();
 
+    const { userObject, isAuthenticated } = useContext(userContext);
+
     const [state, setState] = useState({
-        projects: []
+        userId: '',
+        projects: [],
+        username: '',
+        isLoggedIn: false,
+
     });
 
     useEffect(() => {
         loadProjects()
+        // if (isAuthenticated) {
+            
+        //     setState({ ...state, 
+        //         userId: userObject._id,
+        //         username: userObject.username,
+        //         isLoggedIn: true,
+        //     })
+        // }        
     }, [])
 
     function loadProjects() {

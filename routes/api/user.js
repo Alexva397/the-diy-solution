@@ -5,10 +5,10 @@ const User = require('../../models/user');
 
 function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated())
-      return next();
+        return next();
     else
-      res.json({ error: "User not authenticated" });
-  }
+        res.json({ error: "User not authenticated" });
+}
 
 router.post('/register', (req, res) => {
     const { username, email, password } = req.body;
@@ -17,7 +17,7 @@ router.post('/register', (req, res) => {
         if (err) {
             return res.status(500).json({ message: 'Error has occured' });
         }
-        
+
         if (userMatch) {
             return res.json({
                 error: `Sorry, already a user with the username: ${username}`
@@ -48,7 +48,7 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
 
 // get user object for state
 router.get('/getuser', ensureAuthenticated, (req, res) => {
-    const { username, _id, projects} = req.user
+    const { username, _id, projects } = req.user
     res.status(200).json({ isAuthenticated: true, user: { username, _id, projects } });
 });
 
@@ -80,6 +80,6 @@ router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res) {
         res.redirect('http://localhost:3000/landing');
-});
+    });
 
 module.exports = router;

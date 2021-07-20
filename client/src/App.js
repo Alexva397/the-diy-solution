@@ -1,4 +1,4 @@
-// import React, { createContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
@@ -9,35 +9,37 @@ import Landing from "./pages/LandingPage";
 import Detail from "./pages/Detail";
 import "./assets/css/globalStyles.css";
 // import axios from "axios";
-import Context from "./Context";
+import { userContext } from "./Context";
 
 function App() {
+
+  const { userObject } = useContext(userContext);
+
+  console.log(userObject);
 
   return (
     <>
       <div className="App">
-        <Context>
-          <Router>
-            <Nav />
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/login">
-                <Login />
-              </Route>
-              <Route exact path="/signup">
-                <Signup />
-              </Route>
-              <Route exact path="/landing">
-                <Landing />
-              </Route>
-              <Route exact path="/landing/:id">
-                <Detail />
-              </Route>
-            </Switch>
-          </Router>
-        </Context>
+        <Router>
+          <Nav />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/signup">
+              <Signup />
+            </Route>
+            <Route exact path="/landing">
+              <Landing />
+            </Route>
+            <Route exact path="/landing/:id">
+              <Detail />
+            </Route>
+          </Switch>
+        </Router>
       </div>
     </>
   );
