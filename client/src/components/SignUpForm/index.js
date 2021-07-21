@@ -20,7 +20,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://github.com/Alexva397/the-diy-solution">
-                JP Eiler, Alexander Vadeboncoeur, Katie Patterson, Katy Chadwell
+                JP Eiler, Alex Vadeboncoeur, Katie Patterson, Katy Chadwell
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -159,14 +159,16 @@ function SignUp() {
                         </Grid>
                     </Grid>
                 </form>
-                <GoogleLoginButton
-                    className={classes.socialBtn}
-                    onClick={googleLogin}
-                />
-                <FacebookLoginButton 
-                    className={classes.socialBtn}
-                    onClick={facebookLogin}
-                />
+                <div className={classes.socialBtn}>
+                    <GoogleLoginButton
+                        className={classes.socialBtn}
+                        onClick={googleLogin}
+                    />
+                    <FacebookLoginButton 
+                        className={classes.socialBtn}
+                        onClick={facebookLogin}
+                    />
+                </div>
             </div>
             <Box mt={5}>
                 <Copyright />

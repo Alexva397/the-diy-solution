@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,7 +11,6 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { GoogleLoginButton, FacebookLoginButton } from "react-social-login-buttons";
-import { userContext } from "../../Context";
 import axios from "axios";
 
 
@@ -20,7 +19,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
             <Link color="inherit" href="https://github.com/Alexva397/the-diy-solution">
-                JP Eiler, Alexander Vadeboncoeur, Katie Patterson, Katy Chadwell
+                JP Eiler, Alex Vadeboncoeur, Katie Patterson, Katy Chadwell
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -54,16 +53,8 @@ const useStyles = makeStyles((theme) => ({
 function SignIn() {
     const classes = useStyles();
 
-    const { isAuthenticated } = useContext(userContext);
-
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
-
-    // useEffect(() => {
-    //     if (isAuthenticated === true){
-    //         window.location = "/landing"
-    //     }
-    // });
 
     const googleLogin = () => {
         window.open("http://localhost:3001/api/user/auth/google", "_self");
@@ -143,14 +134,16 @@ function SignIn() {
                         </Grid>
                     </Grid>
                 </form>
-                <GoogleLoginButton
-                    className={classes.socialBtn}
-                    onClick={googleLogin}
-                />
-                <FacebookLoginButton 
-                    className={classes.socialBtn}
-                    onClick={facebookLogin}
-                />
+                <div className={classes.socialBtn}>
+                    <GoogleLoginButton
+                        className={classes.socialBtn}
+                        onClick={googleLogin}
+                    />
+                    <FacebookLoginButton 
+                        className={classes.socialBtn}
+                        onClick={facebookLogin}
+                    />
+                </div>
             </div>
             <Box mt={8}>
                 <Copyright />
