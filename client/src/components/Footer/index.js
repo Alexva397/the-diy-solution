@@ -9,25 +9,29 @@ function Footer() {
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>About Us</h2>
-            <Link to='/sign-up'>How it works</Link>
-            <Link to='/'>Testimonials</Link>
-            <Link to='/'>Careers</Link>
-            <Link to='/'>Investors</Link>
-            <Link to='/'>Terms of Service</Link>
+
+            <Link to='/construction'>How it works</Link>
+            <Link to='/construction'>Testimonials</Link>
+            <Link to='/construction'>Careers</Link>
+            <Link to='/construction'>Investors</Link>
+            <Link to='/construction'>Terms of Service</Link>
           </div>
           <div class='footer-link-items'>
             <h2>Contact Us</h2>
-            <Link to='/'>Contact</Link>
-            <Link to='/'>Support</Link>
+            <Link to='https://github.com/Alexva397/the-diy-solution'>Contact</Link>
+            <Link to='/construction'>Support</Link>
+
           </div>
         </div>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>Social Media</h2>
-            <Link to='/'>Instagram</Link>
-            <Link to='/'>Facebook</Link>
-            <Link to='/'>Youtube</Link>
-            <Link to='/'>Twitter</Link>
+
+            <Link to='/construction'>Instagram</Link>
+            <Link to='/construction'>Facebook</Link>
+            <Link to='/construction'>Youtube</Link>
+            <Link to='/construction'>Twitter</Link>
+
           </div>
         </div>
       </div>

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import TextField from "@material-ui/core/TextField";
-import API from '../../utils/API'
+import API from '../../utils/API';
+import { userContext } from "../../Context";
+
+
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -35,6 +38,9 @@ export default function ProjectModal() {
   const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
+  const { userObject, isAuthenticated } = useContext(userContext);
+
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -43,7 +49,7 @@ export default function ProjectModal() {
     setOpen(false);
     window.location.reload();
   };
-
+  
   const [formObject, setFormObject] = useState([]);
 
     function handleInputChange(event) {
@@ -54,16 +60,19 @@ export default function ProjectModal() {
     function handleFormSubmit(event) {
 
         console.log(formObject)
+        console.log(userObject)
         API.saveProject({
             title: formObject.title,
             description: formObject.description,
-            budget: formObject.budget
+            budget: formObject.budget,
+            userId: userObject._id
         })
             .then(res => {
                 handleClose();
-                console.log(res);
+                console.log('res: ', res);
             })
             .catch(err => console.log(err));
+          
     };
   const body = (
     <div style={modalStyle} className={classes.paper}>

@@ -59,11 +59,11 @@ function SignIn() {
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
-    useEffect(() => {
-        if (isAuthenticated === true){
-            window.location = "/landing"
-        }
-    });
+    // useEffect(() => {
+    //     if (isAuthenticated === true){
+    //         window.location = "/landing"
+    //     }
+    // });
 
     const googleLogin = () => {
         window.open("http://localhost:3001/api/user/auth/google", "_self");
@@ -78,9 +78,12 @@ function SignIn() {
 
         axios.post("/api/user/login", { username: loginUsername, password: loginPassword })
         .then((res) => {
+            console.log(res)
             if (res.data.redirect === "/landing") {
+                localStorage.setItem("user", JSON.stringify({ username: loginUsername }));
                 window.location = "/landing";
             } else if (res.data.redirect === "/login"){
+                localStorage.removeItem("user");
                 window.location = "/login";
             }
         });

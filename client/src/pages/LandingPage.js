@@ -19,24 +19,34 @@ function Landing() {
     const { userObject, isAuthenticated } = useContext(userContext);
 
     const [state, setState] = useState({
-        userId: '',
+        // userId: '',
         projects: [],
-        username: '',
-        isLoggedIn: false,
-
+        // username: '',
+        // isLoggedIn: false,
     });
+    const [username, setUsername] = useState("");
+    const [userId, setUserId] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
-        loadProjects()
-        // if (isAuthenticated) {
-            
-        //     setState({ ...state, 
-        //         userId: userObject._id,
-        //         username: userObject.username,
-        //         isLoggedIn: true,
-        //     })
-        // }        
-    }, [])
+        if (isAuthenticated) {
+            // setState({ ...state, 
+            //     userId: userObject._id,
+            //     username: userObject.username,
+            //     isLoggedIn: true,
+            // });
+            setUsername(userObject.username);
+            setUserId(userObject._id);
+            setIsLoggedIn(true);
+            loadProjects();
+        }        
+    }, [isAuthenticated])
+
+    function deleteProject(id){
+		API.deleteProject(id)
+		.then(res => loadProjects())
+		.catch(err => console.log(err));
+	  };
 
     function loadProjects() {
         API.getProjects()
@@ -50,7 +60,7 @@ function Landing() {
             </div>
             
             {state.projects.map((project) => {return <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} 
-            materials={project.materials} photos={project.photos} docs={project.docs}></ListItem>})} 
+            materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)}></ListItem>})} 
         </div>        
     )
 }
