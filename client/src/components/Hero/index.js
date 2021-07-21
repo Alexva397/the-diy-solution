@@ -2,7 +2,7 @@ import React from 'react';
 import './hero.css';
 import '../../../src/App.css';
 import Divider from '@material-ui/core/Divider';
-// import video from '../../assets/videos/Nick_Offerman_TOH.mp4';
+import video from '../../assets/videos/NOTOH.mp4';
 // import { Player } from 'video-react';
 
 function Hero() {
@@ -13,8 +13,7 @@ function Hero() {
         <source src='../../assets/videos/video-1.mp4' type="video/mp4"></source>
       </video> */}
       {/* <Player> */}
-      <source src={'https://clipchamp.com/watch/8dV9CUTocrZ'} autoPlay loop muted/>
-      {/* </Player> */}
+          <video src={video} autoPlay loop muted></video>
       <h1>Your All-in-One <br></br> Home Project <br></br> Management Solution</h1>
       <Divider />
       <h3>Save Money. Improve Value. Get Organized.</h3>
