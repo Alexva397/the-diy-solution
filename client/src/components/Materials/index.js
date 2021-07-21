@@ -140,11 +140,7 @@ function Materials({ key, materials }) {
                             <Td>${material.budgetPrice}</Td>
                             <Td>${material.budgetPrice - material.purchasePrice}</Td>
                             <Td>
-<<<<<<< HEAD
-                                <button class="delete-material" onClick={() => handleMaterialDelete(id, material._id)}>Remove</button>
-=======
                                 <Button className="delete-material" variant="outlined" onClick={() => handleMaterialDelete(id, material._id)}>Remove</Button>
->>>>>>> e79955ea00da868333e5ff84e2db481bd8269f7e
                             </Td>
                         </Tr>
                     </Tbody>

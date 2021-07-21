@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
+import { Grid } from '@material-ui/core';
 import ListItem from '../components/ListItem';
 import ProjectModal from '../components/ProjectModal'
 import API from '../utils/API'
@@ -10,11 +11,17 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
         width: '100%',
         marginTop: theme.spacing(8),
+    },
+    appContainer: {
+        width: '90vw',
+        marginLeft: '5vw',
+        marginRight: '5vw'
     }
 }))
 
+
 function Landing() {
-    const { root } = useStyles();
+    const { root, appContainer } = useStyles();
 
     const { userObject, isAuthenticated } = useContext(userContext);
 
@@ -28,6 +35,8 @@ function Landing() {
     const [userId, setUserId] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    var colors = ["#c8afdf","#dfd6af","#dfc2af","#afdfaf","#afdcdf"];
+    var iterationCount = 0;
     useEffect(() => {
         if (isAuthenticated) {
             // setState({ ...state, 
@@ -59,10 +68,26 @@ function Landing() {
                 <ProjectModal></ProjectModal>   
             </div>
             
-            {state.projects.map((project) => {return <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} 
-            materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)}></ListItem>})} 
-        </div>        
+            <Grid container className={appContainer} spacing={3}>
+                {
+                state.projects.map((project, i) => {
+        
+                    if (i === colors.length - 1){
+                        iterationCount++;
+                    }
+                    var itemColor = colors[i-(colors.length*iterationCount)]
+                    return <Grid item xs={4}>
+                        <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} color={itemColor}
+                        materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)}></ListItem>
+                        </Grid>
+                })
+            }
+            
+            </Grid>
+                         
+        </div>
     )
 }
 
 export default Landing;
+

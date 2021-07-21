@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import './styles.css'
 
-function ListItem({title,description,id, handleProjectDelete}) {
+function ListItem({title,description,id, handleProjectDelete, color}) {
 
     return (
-        <div className="list-item-div">
+        <div className="list-item-div" style={{backgroundColor: color}}>
             <Link className="project-link" to={"/landing/" + id}>
                       <h1>
                         {title}
