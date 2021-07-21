@@ -23,7 +23,12 @@ const useStyles = makeStyles((theme) => ({
     table: {
         marginTop: theme.spacing(2),
         marginBottom: theme.spacing(3),
-
+    },
+    saved: {
+        color: 'rgb(15, 194, 15)',
+    },
+    loss: {
+        color: 'rgb(255, 6, 6)'
     }
 }));
 
@@ -55,10 +60,10 @@ function Materials({ key, materials }) {
     };
     console.log(formObject)
 
-    function handleMaterialDelete (id, materialId) {
+    function handleMaterialDelete(id, materialId) {
         console.log(materialId);
         API.removeMaterial(id, {
-                _id: materialId
+            _id: materialId
         })
     }
 
@@ -139,7 +144,7 @@ function Materials({ key, materials }) {
                             <Td>{material.quantity}</Td>
                             <Td>${material.purchasePrice}</Td>
                             <Td>${material.budgetPrice}</Td>
-                            <Td>${material.budgetPrice - material.purchasePrice}</Td>
+                            <Td className={material.budgetPrice > material.purchasePrice ? classes.saved : classes.loss}>${material.budgetPrice - material.purchasePrice}</Td>
                             {/* Add after adding routes for materials */}
                             <Td>
                                 <Button className="delete-material" variant="outlined" onClick={() => handleMaterialDelete(id, material._id)}>Remove</Button>
