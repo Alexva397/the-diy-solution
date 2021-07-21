@@ -9,6 +9,7 @@ function Footer() {
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>About Us</h2>
+
             <Link to='/construction'>How it works</Link>
             <Link to='/construction'>Testimonials</Link>
             <Link to='/construction'>Careers</Link>
@@ -19,15 +20,18 @@ function Footer() {
             <h2>Contact Us</h2>
             <Link to='https://github.com/Alexva397/the-diy-solution'>Contact</Link>
             <Link to='/construction'>Support</Link>
+
           </div>
         </div>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>Social Media</h2>
+
             <Link to='/construction'>Instagram</Link>
             <Link to='/construction'>Facebook</Link>
             <Link to='/construction'>Youtube</Link>
             <Link to='/construction'>Twitter</Link>
+
           </div>
         </div>
       </div>
