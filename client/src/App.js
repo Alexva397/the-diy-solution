@@ -9,7 +9,6 @@ import Landing from "./pages/LandingPage";
 import Detail from "./pages/Detail";
 import WIP from "./pages/WIP";
 import "./assets/css/globalStyles.css";
-// import axios from "axios";
 import { userContext } from "./Context";
 
 function App() {
