@@ -20,8 +20,11 @@ const useStyles = makeStyles({
     },
     name: {
         fontSize: 35,
-        
-    }
+    },
+    balance: {
+        fontSize: 20,
+        color: 'rgb(255, 6, 6)',
+    },
 });
 
 function Summary({ title, budget, totalSpent }) {
@@ -29,23 +32,23 @@ function Summary({ title, budget, totalSpent }) {
     const balance = budget - totalSpent;
 
     return (
-            <Grid container>
-                <CssBaseline />
-                <Grid item xs={12}>
-                    <Typography className={classes.name}>
-                        {title}
-                    </Typography>
-                    <Typography className={classes.title}>
-                        Budget: ${budget}
-                    </Typography>
-                    <Typography className={classes.title}>
-                        Cost to Date: ${totalSpent}
-                    </Typography>
-                    <Typography className={classes.title}>
-                        Balance: ${balance}
-                    </Typography>
-                </Grid>              
+        <Grid container>
+            <CssBaseline />
+            <Grid item xs={12}>
+                <Typography className={classes.name}>
+                    {title}
+                </Typography>
+                <Typography className={classes.title}>
+                    Budget: ${budget}
+                </Typography>
+                <Typography className={classes.title}>
+                    Cost to Date: ${totalSpent}
+                </Typography>
+                <Typography className={balance < 0 ? classes.balance : classes.title}>
+                    Balance: ${balance}
+                </Typography>
             </Grid>
+        </Grid>
     );
 }
 
