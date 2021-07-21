@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/SignIn";
 import Landing from "./pages/LandingPage";
 import Detail from "./pages/Detail";
+import WIP from "./pages/WIP";
 import "./assets/css/globalStyles.css";
 // import axios from "axios";
 import { userContext } from "./Context";
@@ -37,6 +38,9 @@ function App() {
             </Route>
             <Route exact path="/landing/:id">
               {isAuthenticated ? <Detail /> : <Redirect to="/login" />}
+            </Route>
+            <Route exact path="/construction">
+              <WIP />
             </Route>
           </Switch>
         </Router>

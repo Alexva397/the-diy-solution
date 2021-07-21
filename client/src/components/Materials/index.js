@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     table: {
         marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(3),
 
     }
 }));
@@ -141,7 +142,7 @@ function Materials({ key, materials }) {
                             <Td>${material.budgetPrice - material.purchasePrice}</Td>
                             {/* Add after adding routes for materials */}
                             <Td>
-                                <Button class="delete-material" onClick={() => handleMaterialDelete(id, material._id)}>Remove</Button>
+                                <Button className="delete-material" variant="outlined" onClick={() => handleMaterialDelete(id, material._id)}>Remove</Button>
                             </Td>
                         </Tr>
                     </Tbody>
