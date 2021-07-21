@@ -35,8 +35,8 @@ function Landing() {
     const [userId, setUserId] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    var colors = ["#c8afdf","#dfd6af","#dfc2af","#afdfaf","#afdcdf"];
-    var iterationCount = 0;
+    var colors = ["#c8afdf", "#dfc2af", "#dfd6af","#afdcdf"];
+    var iterationCount = 1;
     useEffect(() => {
         if (isAuthenticated) {
             // setState({ ...state, 
@@ -71,11 +71,14 @@ function Landing() {
             <Grid container className={appContainer} spacing={3}>
                 {
                 state.projects.map((project, i) => {
-        
-                    if (i === colors.length - 1){
+                    console.log("i: ", i);
+                    console.log("colors.length*iterationCount: ", colors.length*iterationCount);
+                    if ((i === ((colors.length )*iterationCount) && (iterationCount !== 0))|| i === colors.length){
                         iterationCount++;
+                        console.log('Iteration count: ' + iterationCount)
                     }
-                    var itemColor = colors[i-(colors.length*iterationCount)]
+                    var itemColor = colors[i-(colors.length*iterationCount) + colors.length]
+                    console.log (i-(colors.length*iterationCount) + colors.length)
                     return <Grid item xs={4}>
                         <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} color={itemColor}
                         materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)}></ListItem>
