@@ -6,7 +6,7 @@ import './styles.css'
 function ListItem({title,description,id, handleProjectDelete, color}) {
 
     return (
-        <div className="list-item-div" style={{backgroundColor: color}}>
+        <div className="list-item-div" style={{background: color}}>
             <Link className="project-link" to={"/landing/" + id}>
                       <h1>
                         {title}

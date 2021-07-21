@@ -35,8 +35,13 @@ function Landing() {
     const [userId, setUserId] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    var colors = ["#c8afdf", "#dfc2af", "#dfd6af","#afdcdf"];
+    //var sampleColors = ["#ddd5e4", "#dfc2af", "#dfd6af","#afdcdf"];
+    var colors = ["linear-gradient(90deg, rgba(221,213,228,1) 35%, rgba(175,220,223,1) 100%)", 
+                    "linear-gradient(90deg, rgba(175,220,223,1) 35%, rgba(223,214,175,1) 100%)", 
+                    "linear-gradient(90deg, rgba(223,214,175,1) 35%, rgba(223,194,175,1) 100%)",
+                    "linear-gradient(90deg, rgba(223,194,175,1) 35%, rgba(221,213,228,1) 100%)"];
     var iterationCount = 1;
+
     useEffect(() => {
         if (isAuthenticated) {
             // setState({ ...state, 
@@ -64,6 +69,7 @@ function Landing() {
     };
     return (
         <div className={root}>
+
             <div class= "button-bar">
                 <ProjectModal></ProjectModal>   
             </div>
@@ -71,14 +77,13 @@ function Landing() {
             <Grid container className={appContainer} spacing={3}>
                 {
                 state.projects.map((project, i) => {
-                    console.log("i: ", i);
-                    console.log("colors.length*iterationCount: ", colors.length*iterationCount);
+
                     if ((i === ((colors.length )*iterationCount) && (iterationCount !== 0))|| i === colors.length){
                         iterationCount++;
-                        console.log('Iteration count: ' + iterationCount)
                     }
+
                     var itemColor = colors[i-(colors.length*iterationCount) + colors.length]
-                    console.log (i-(colors.length*iterationCount) + colors.length)
+
                     return <Grid item xs={4}>
                         <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} color={itemColor}
                         materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)}></ListItem>
