@@ -7,6 +7,6 @@ import Context from "./Context";
 ReactDOM.render(
     <Context>
         <App />
-    </Context>, 
+    </Context>,
     document.getElementById("root")
 );

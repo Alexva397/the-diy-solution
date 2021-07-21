@@ -21,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(3)
     },
     table: {
-        marginTop: theme.spacing(3)
+        marginTop: theme.spacing(2),
+
     }
 }));
 
@@ -41,6 +42,7 @@ function Materials({ key, materials }) {
         API.updateProject(id, {
             materials: {
                 item: formObject.item,
+                quantity: formObject.quantity,
                 budgetPrice: formObject.budgetPrice,
                 purchasePrice: formObject.purchasePrice
             }
@@ -52,6 +54,7 @@ function Materials({ key, materials }) {
             .catch(err => console.log(err));
     };
     console.log(formObject)
+
 
 
     return (
@@ -70,13 +73,13 @@ function Materials({ key, materials }) {
                     />
                     <TextField
                         id="standard-textarea"
-                        label="Budget Price"
-                        name="budgetPrice"
+                        label="Quantity"
+                        name="quantity"
                         placeholder="Placeholder"
                         multiline
                         className={classes.textfield}
                         onChange={handleInputChange}
-                        value={formObject.budgetPrice}
+                        value={formObject.quantity}
                     />
                     <TextField
                         id="standard-textarea"
@@ -88,8 +91,18 @@ function Materials({ key, materials }) {
                         onChange={handleInputChange}
                         value={formObject.purchasePrice}
                     />
+                    <TextField
+                        id="standard-textarea"
+                        label="Budget Price"
+                        name="budgetPrice"
+                        placeholder="Placeholder"
+                        multiline
+                        className={classes.textfield}
+                        onChange={handleInputChange}
+                        value={formObject.budgetPrice}
+                    />
                     <Button
-                        disabled={!formObject.item && formObject.budgetPrice && formObject.purchasePrice}
+                        disabled={!formObject.item && !formObject.quantity && !formObject.budgetPrice && !formObject.purchasePrice}
                         onClick={handleFormSubmit}
                         type="submit"
                         multiline
@@ -106,17 +119,20 @@ function Materials({ key, materials }) {
                 <Thead>
                     <Tr>
                         <Th>Item Name</Th>
-                        <Th>Budget Price</Th>
+                        <Th>Quantity</Th>
                         <Th>Purchase Price</Th>
+                        <Th>Budget Price</Th>
+                        <Th>Saved</Th>
                     </Tr>
                 </Thead>
                 {materials.map(material => (
-
                     <Tbody>
                         <Tr>
                             <Td>{material.item}</Td>
-                            <Td>{material.budgetPrice}</Td>
-                            <Td>{material.purchasePrice}</Td>
+                            <Td>{material.quantity}</Td>
+                            <Td>${material.purchasePrice}</Td>
+                            <Td>${material.budgetPrice}</Td>
+                            <Td>${material.budgetPrice - material.purchasePrice}</Td>
                         </Tr>
                     </Tbody>
                 ))}

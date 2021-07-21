@@ -12,6 +12,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { GoogleLoginButton, FacebookLoginButton } from "react-social-login-buttons";
 import API from "../../utils/API";
+import axios from "axios";
+
 
 function Copyright() {
     return (
@@ -67,9 +69,7 @@ function SignUp() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log("username is " + username);
-        console.log("email is " + email);
-        console.log("password is " + password);
+
         const newUser = {
             username: username,
             email: email,
@@ -78,7 +78,14 @@ function SignUp() {
         API.registerUser(newUser)
             .then((res) => {
                 if (res.data) {
-                    window.location = "/landing";
+                    axios.post("/api/user/login", { username: username, password: password })
+                    .then((res) => {
+                        if (res.data.redirect === "/landing") {
+                            window.location = "/landing";
+                        } else if (res.data.redirect === "/login"){
+                            window.location = "/login";
+                        }
+                    });
                 }
             })
     }

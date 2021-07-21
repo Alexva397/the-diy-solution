@@ -14,11 +14,13 @@ const projectSeed = [
     materials: [
       {
         item: 'paint',
+        quantity: 6,
         budgetPrice: 150,
         purchasePrice: 200
       },
       {
         item: 'cabinets',
+        quantity: 5,
         budgetPrice: 500,
         purchasePrice: 480
       },
@@ -31,11 +33,13 @@ const projectSeed = [
     materials: [
       {
         item: 'Paint',
+        quantity: 3,
         budgetPrice: 40,
         purchasePrice: 35
       },
       {
         item: "Faucet",
+        quantity: 1,
         budgetPrice: 20,
         purchasePrice: 35
       }

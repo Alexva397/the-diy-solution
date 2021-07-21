@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,9 +10,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-// import GoogleButton from "react-google-button";
 import { GoogleLoginButton, FacebookLoginButton } from "react-social-login-buttons";
-// import API from "../../utils/API";
+import { userContext } from "../../Context";
 import axios from "axios";
 
 
@@ -55,9 +54,16 @@ const useStyles = makeStyles((theme) => ({
 function SignIn() {
     const classes = useStyles();
 
+    const { isAuthenticated } = useContext(userContext);
+
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
+    useEffect(() => {
+        if (isAuthenticated === true){
+            window.location = "/landing"
+        }
+    });
 
     const googleLogin = () => {
         window.open("http://localhost:3001/api/user/auth/google", "_self");
@@ -134,10 +140,6 @@ function SignIn() {
                         </Grid>
                     </Grid>
                 </form>
-                {/* <GoogleButton
-                    className={classes.socialBtn}
-                    onClick={googleLogin}
-                /> */}
                 <GoogleLoginButton
                     className={classes.socialBtn}
                     onClick={googleLogin}

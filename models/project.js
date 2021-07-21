@@ -7,10 +7,14 @@ const projectSchema = new Schema({
     budget: Number,
     materials: [{
         item: String,
+        quantity: Number,
         budgetPrice: Number,
         purchasePrice: Number
     }],
-
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 });
 
 const Project = mongoose.model('Project', projectSchema);

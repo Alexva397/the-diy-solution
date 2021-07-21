@@ -1,3 +1,4 @@
+import React, { useContext } from "react";
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
@@ -7,8 +8,15 @@ import Signup from "./pages/SignIn";
 import Landing from "./pages/LandingPage";
 import Detail from "./pages/Detail";
 import "./assets/css/globalStyles.css";
+// import axios from "axios";
+import { userContext } from "./Context";
 
 function App() {
+
+  const { userObject } = useContext(userContext);
+
+  console.log(userObject);
+
   return (
     <>
       <div className="App">
