@@ -19,19 +19,25 @@ function Landing() {
     const { userObject, isAuthenticated } = useContext(userContext);
 
     const [state, setState] = useState({
-        userId: '',
+        // userId: '',
         projects: [],
-        username: '',
-        isLoggedIn: false,
+        // username: '',
+        // isLoggedIn: false,
     });
+    const [username, setUsername] = useState("");
+    const [userId, setUserId] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         if (isAuthenticated) {
-            setState({ ...state, 
-                userId: userObject._id,
-                username: userObject.username,
-                isLoggedIn: true,
-            });
+            // setState({ ...state, 
+            //     userId: userObject._id,
+            //     username: userObject.username,
+            //     isLoggedIn: true,
+            // });
+            setUsername(userObject.username);
+            setUserId(userObject._id);
+            setIsLoggedIn(true);
             loadProjects();
         }        
     }, [isAuthenticated])
@@ -44,7 +50,7 @@ function Landing() {
 
     function loadProjects() {
         API.getProjects()
-            .then(res => { console.log(res.data); setState({...state, projects: res.data})})
+            .then(res => { console.log(res.data); setState({projects: res.data})})
             .catch(err => console.log(err));
     };
     return (
