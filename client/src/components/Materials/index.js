@@ -55,10 +55,10 @@ function Materials({ key, materials }) {
     console.log(formObject)
 
     function handleMaterialDelete (id, materialId) {
-        console.log(materialId);
         API.removeMaterial(id, {
                 _id: materialId
-        })
+        });
+        window.location.reload();
     }
 
     return (
@@ -127,7 +127,6 @@ function Materials({ key, materials }) {
                         <Th>Purchase Price</Th>
                         <Th>Budget Price</Th>
                         <Th>Saved</Th>
-                        {/* Add after adding routes for materials */}
                         <Th></Th>
                     </Tr>
                 </Thead>
@@ -139,9 +138,8 @@ function Materials({ key, materials }) {
                             <Td>${material.purchasePrice}</Td>
                             <Td>${material.budgetPrice}</Td>
                             <Td>${material.budgetPrice - material.purchasePrice}</Td>
-                            {/* Add after adding routes for materials */}
                             <Td>
-                                <Button class="delete-material" onClick={() => handleMaterialDelete(id, material._id)}>Remove</Button>
+                                <button class="delete-material" onClick={() => handleMaterialDelete(id, material._id)}>Remove</button>
                             </Td>
                         </Tr>
                     </Tbody>

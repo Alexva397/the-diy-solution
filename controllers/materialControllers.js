@@ -1,7 +1,6 @@
 const db = require('../models');
 const mongoose = require('mongoose');
 
-//Not functional yet
 module.exports = {
     removeMaterial: function (req, res){
         db.Project.findOneAndUpdate(
