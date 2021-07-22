@@ -10,7 +10,6 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 
-
 app.use(cors());
 app.use(morgan('dev'));
 
@@ -38,6 +37,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/diydb',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
   },
   () => console.log('successful db connection')
 );
