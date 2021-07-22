@@ -40,7 +40,7 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
 });
 
 
-// get user object for state
+// get user object for context
 router.get('/getuser', auth, (req, res) => {
     const { username, _id, projects } = req.user
     res.status(200).json({ isAuthenticated: true, user: { username, _id, projects } });
@@ -75,5 +75,17 @@ router.get('/auth/facebook/callback',
     function (req, res) {
         res.redirect('http://localhost:3000/landing');
     });
+
+// ------------------ Twitter routes ----------------------
+
+router.get('/auth/twitter',
+  passport.authenticate('twitter'));
+
+router.get('/auth/twitter/callback', 
+  passport.authenticate('twitter', { failureRedirect: '/login' }),
+  function(req, res) {
+    res.redirect('http://localhost:3000/landing');
+  });
+
 
 module.exports = router;

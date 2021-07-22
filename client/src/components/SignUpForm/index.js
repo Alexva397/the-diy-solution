@@ -10,7 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { GoogleLoginButton, FacebookLoginButton } from "react-social-login-buttons";
+import { GoogleLoginButton, FacebookLoginButton, TwitterLoginButton } from "react-social-login-buttons";
 import API from "../../utils/API";
 import axios from "axios";
 
@@ -65,6 +65,10 @@ function SignUp() {
 
     const facebookLogin = () => {
         window.open("http://localhost:3001/api/user/auth/facebook", "_self");
+    }
+
+    const twitterLogin = () => {
+        window.open("http://localhost:3001/api/user/auth/twitter", "_self");
     }
 
     const handleSubmit = e => {
