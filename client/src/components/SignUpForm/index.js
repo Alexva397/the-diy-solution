@@ -172,6 +172,9 @@ function SignUp() {
                         className={classes.socialBtn}
                         onClick={facebookLogin}
                     />
+                    <TwitterLoginButton
+                        onClick={twitterLogin}
+                    />
                 </div>
             </div>
             <Box mt={5}>
