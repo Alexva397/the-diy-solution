@@ -84,7 +84,7 @@ function Landing() {
 
                     var itemColor = colors[i-(colors.length*iterationCount) + colors.length]
 
-                    return <Grid item xs={4}>
+                    return <Grid item xs={6} md={4} lg= {3}>
                         <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} color={itemColor}
                         materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)}></ListItem>
                         </Grid>
