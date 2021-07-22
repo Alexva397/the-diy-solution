@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Materials({ key, materials }) {
+function Materials({ key, materials, submit }) {
     const classes = useStyles([]);
     const [formObject, setFormObject] = useState([]);
 
@@ -41,8 +41,11 @@ function Materials({ key, materials }) {
         setFormObject({ ...formObject, [name]: value })
     };
 
+    function clickEvent(){return {submit}}
     const { id } = useParams();
+
     function handleFormSubmit(event) {
+       event.preventDefault();
         console.log(formObject)
         API.updateProject(id, {
             materials: {
@@ -57,14 +60,15 @@ function Materials({ key, materials }) {
                 console.log(res);
             })
             .catch(err => console.log(err));
+
     };
     console.log(formObject)
-
+    console.log({submit})
     function handleMaterialDelete(id, materialId) {
         API.removeMaterial(id, {
             _id: materialId
         });
-        window.location.reload();
+        // window.location.reload();
     }
 
     return (

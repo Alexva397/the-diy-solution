@@ -75,15 +75,17 @@ function Detail() {
     const { id } = useParams()
     console.log(id);
     useEffect(() => {
+       loadProjects();
+    }, [id])
+
+    function loadProjects(){
         API.getProject(id)
             .then(res => {
                 setProject(res.data[0])
-                console.log(res.data)
+                console.log('Using effect.')
             })
             .catch(err => console.log(err));
-    }, [id])
-
-    console.log(project);
+    }
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -113,7 +115,7 @@ function Detail() {
             </TabPanel>
             <TabPanel value={value} index={1}>
 
-                <Materials key={project.title} materials={project.materials} />
+                <Materials key={project.title} materials={project.materials} submit={() => loadProjects}/>
 
 
             </TabPanel>
