@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
+import Loading from "./components/Loading";
 import axios from "axios";
 
 export const userContext = createContext();
@@ -28,7 +29,7 @@ export default function Context({ children }) {
 
     return (
         <>
-            {!isLoaded ? <h1>loading</h1> :
+            {!isLoaded ? <Loading /> :
             <userContext.Provider value={{ userObject, setUserObject, isAuthenticated, setIsAuthenticated }}>
                 {children}
             </userContext.Provider>}

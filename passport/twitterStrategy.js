@@ -9,6 +9,7 @@ const twitterStrategy = new TwitterStrategy(
         consumerKey: process.env.TWITTER_CONSUMER_KEY,
         consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
         callbackURL: 'http://localhost:3001/api/user/auth/twitter/callback',
+        // 'https://warm-caverns-74106.herokuapp.com/api/user/auth/twitter/callback'
     },
     function(token, tokenSecret, profile, done) {
         const { id, displayName } = profile;
