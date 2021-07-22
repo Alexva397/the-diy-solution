@@ -10,7 +10,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { GoogleLoginButton, FacebookLoginButton } from "react-social-login-buttons";
+import { GoogleLoginButton, FacebookLoginButton, TwitterLoginButton } from "react-social-login-buttons";
 import axios from "axios";
 
 
@@ -63,6 +63,10 @@ function SignIn() {
     const facebookLogin = () => {
         window.open("http://localhost:3001/api/user/auth/facebook", "_self");
     }
+    
+    const twitterLogin = () => {
+        window.open("http://localhost:3001/api/user/auth/twitter", "_self");
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -71,10 +75,8 @@ function SignIn() {
         .then((res) => {
             console.log(res)
             if (res.data.redirect === "/landing") {
-                localStorage.setItem("user", JSON.stringify({ username: loginUsername }));
                 window.location = "/landing";
             } else if (res.data.redirect === "/login"){
-                localStorage.removeItem("user");
                 window.location = "/login";
             }
         });
@@ -136,12 +138,13 @@ function SignIn() {
                 </form>
                 <div className={classes.socialBtn}>
                     <GoogleLoginButton
-                        className={classes.socialBtn}
                         onClick={googleLogin}
                     />
                     <FacebookLoginButton 
-                        className={classes.socialBtn}
                         onClick={facebookLogin}
+                    />
+                    <TwitterLoginButton
+                        onClick={twitterLogin}
                     />
                 </div>
             </div>

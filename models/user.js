@@ -8,10 +8,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    projects: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Project'
-    }],
+    // projects: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Project'
+    // }],
     email: {
         type: String,
         required: false,
@@ -25,6 +25,10 @@ const userSchema = new Schema({
         required: false,
     },
     facebookId: {
+        type: String,
+        required: false,
+    },
+    twitterId: {
         type: String,
         required: false,
     },
