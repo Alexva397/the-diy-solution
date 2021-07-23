@@ -41,11 +41,9 @@ function Materials({ key, materials, submit }) {
         setFormObject({ ...formObject, [name]: value })
     };
 
-    function clickEvent(){return {submit}}
     const { id } = useParams();
 
     function handleFormSubmit(event) {
-       event.preventDefault();
         console.log(formObject)
         API.updateProject(id, {
             materials: {
@@ -63,12 +61,12 @@ function Materials({ key, materials, submit }) {
 
     };
     console.log(formObject)
-    console.log({submit})
+    console.log({ submit })
     function handleMaterialDelete(id, materialId) {
         API.removeMaterial(id, {
             _id: materialId
         });
-        // window.location.reload();
+        window.location.reload();
     }
 
     return (

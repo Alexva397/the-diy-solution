@@ -62,7 +62,7 @@ router.get('/auth/google/callback',
     passport.authenticate('google', { failureRedirect: '/login' }),
     function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('http://localhost:3000/landing');
+        res.redirect('https://warm-caverns-74106.herokuapp.com/landing' || 'http://localhost:3000/landing');
     });
 
 // ------------------ Facebook routes ----------------------
@@ -73,7 +73,7 @@ router.get('/auth/facebook',
 router.get('/auth/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/login' }),
     function (req, res) {
-        res.redirect('http://localhost:3000/landing');
+        res.redirect('https://warm-caverns-74106.herokuapp.com/landing' ||'http://localhost:3000/landing');
     });
 
 // ------------------ Twitter routes ----------------------
@@ -84,7 +84,7 @@ router.get('/auth/twitter',
 router.get('/auth/twitter/callback', 
   passport.authenticate('twitter', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('http://localhost:3000/landing');
+    res.redirect('https://warm-caverns-74106.herokuapp.com/landing' || 'http://localhost:3000/landing');
   });
 
 

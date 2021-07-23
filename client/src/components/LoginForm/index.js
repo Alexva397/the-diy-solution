@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { GoogleLoginButton, FacebookLoginButton, TwitterLoginButton } from "react-social-login-buttons";
+import auth from "../../utils/auth";
 import axios from "axios";
 
 
@@ -55,18 +56,6 @@ function SignIn() {
 
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
-
-    const googleLogin = () => {
-        window.open("http://localhost:3001/api/user/auth/google", "_self");
-    }
-
-    const facebookLogin = () => {
-        window.open("http://localhost:3001/api/user/auth/facebook", "_self");
-    }
-    
-    const twitterLogin = () => {
-        window.open("http://localhost:3001/api/user/auth/twitter", "_self");
-    }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -138,13 +127,13 @@ function SignIn() {
                 </form>
                 <div className={classes.socialBtn}>
                     <GoogleLoginButton
-                        onClick={googleLogin}
+                        onClick={auth.googleLogin}
                     />
                     <FacebookLoginButton 
-                        onClick={facebookLogin}
+                        onClick={auth.facebookLogin}
                     />
                     <TwitterLoginButton
-                        onClick={twitterLogin}
+                        onClick={auth.twitterLogin}
                     />
                 </div>
             </div>
