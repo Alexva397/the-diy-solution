@@ -7,8 +7,7 @@ const googleStrategy = new GoogleStrategy(
     {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3001/api/user/auth/google/callback',
-        // 'https://warm-caverns-74106.herokuapp.com/api/user/auth/google/callback'
+        callbackURL: 'https://warm-caverns-74106.herokuapp.com/api/user/auth/google/callback' || 'http://localhost:3001/api/user/auth/google/callback',
     },
     function (accessToken, refreshToken, profile, done) {
         const { id, displayName } = profile;
