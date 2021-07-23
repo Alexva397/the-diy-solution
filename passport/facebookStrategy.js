@@ -8,8 +8,7 @@ const facebookStrategy = new FacebookStrategy(
     {
         clientID: process.env.FACEBOOK_CLIENT_ID,
         clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-        callbackURL: 'http://localhost:3001/api/user/auth/facebook/callback',
-        // 'https://warm-caverns-74106.herokuapp.com/api/user/auth/facebook/callback'
+        callbackURL: 'https://warm-caverns-74106.herokuapp.com/api/user/auth/facebook/callback' || 'http://localhost:3001/api/user/auth/facebook/callback',
     },
     function (accessToken, refreshToken, profile, done) {
         const { id, displayName } = profile;
