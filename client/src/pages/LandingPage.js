@@ -35,11 +35,33 @@ function Landing() {
     const [userId, setUserId] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-    //var sampleColors = ["#ddd5e4", "#dfc2af", "#dfd6af","#afdcdf"];
-    var colors = ["linear-gradient(90deg, rgba(221,213,228,1) 35%, rgba(175,220,223,1) 100%)", 
-                    "linear-gradient(90deg, rgba(175,220,223,1) 35%, rgba(223,214,175,1) 100%)", 
-                    "linear-gradient(90deg, rgba(223,214,175,1) 35%, rgba(223,194,175,1) 100%)",
-                    "linear-gradient(90deg, rgba(223,194,175,1) 35%, rgba(221,213,228,1) 100%)"];
+    //var sampleColors = ["#96ded1", "#3fb0ac", "#008080","#173e43"];
+    //var sampleColors = ["#c9ffe5", "#96ded1", "#3fb0ac","#008080"];
+    //var sampleColors = ["#dddfd4", "#96ded1", "#3fb0ac","#008080"];
+
+    // var colors = ["linear-gradient(90deg, rgba(221,213,228,1) 35%, rgba(175,220,223,1) 100%)", 
+    //                 "linear-gradient(90deg, rgba(175,220,223,1) 35%, rgba(223,214,175,1) 100%)", 
+    //                 "linear-gradient(90deg, rgba(223,214,175,1) 35%, rgba(223,194,175,1) 100%)",
+    //                 "linear-gradient(90deg, rgba(223,194,175,1) 35%, rgba(221,213,228,1) 100%)"];
+
+    // var colors = ["linear-gradient(90deg, rgba(150,222,209,1) 35%, rgba(63,176,172,1) 100%)", 
+    // "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(0,128,128,1) 100%)", 
+    // "linear-gradient(90deg, rgba(0,128,128,1) 35%, rgba(23,62,67,1) 100%)",
+    // "linear-gradient(90deg, rgba(23,62,67,1) 35%, rgba(0,128,128,1) 100%)",
+    // "linear-gradient(90deg, rgba(0,128,128,1) 35%,rgba(63,176,172,1)  100%)",
+    // "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(150,222,209,1)100%)"];
+
+    // var colors = ["linear-gradient(90deg, rgba(201,255,229,1) 35%, rgba(150,222,209,1) 100%)", 
+    // "linear-gradient(90deg, rgba(150,222,209,1) 35%, rgba(63,176,172,1) 100%)", 
+    // "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(0,128,128,1) 100%)",
+    // "linear-gradient(90deg, rgba(0,128,128,1) 35%, rgba(63,176,172,1) 100%)",
+    // "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(150,222,209,1) 100%)",
+    // "linear-gradient(90deg, rgba(150,222,209,1) 35%, rgba(201,255,229,1) 100%)"];
+
+    var colors = ["linear-gradient(90deg, rgba(201,255,229,1) 35%, rgba(150,222,209,1) 100%)", 
+    "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(0,128,128,1) 100%)",
+    "linear-gradient(90deg, rgba(150,222,209,1) 35%, rgba(63,176,172,1) 100%)"];
+
     var iterationCount = 1;
 
     useEffect(() => {

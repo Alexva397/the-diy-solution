@@ -1,12 +1,11 @@
 .list-item-div {
-	background-color: #afdcdf;
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
-	/* width: 30%; */
 	border-radius: 2px;
 	box-shadow: 0px 2px 2px #818181;
 	text-align: left;
+	height: 200px;
 }
 
 .project-link {
@@ -15,11 +14,11 @@
 }
 
 .project-link h1 {
+	text-align: center;
 	padding-top: 15px;
-	padding-left: 10px;
 	-webkit-text-stroke: 0.px rgb(0, 0, 0);
 	/* text-shadow: 0px 2px 2px #131313; */
-	color: white;
+	color: black;
 }
 
 .project-description {
@@ -27,5 +26,15 @@
 	padding-top: 10px;
 	padding-left: 10px;
 
-	background-color: #aaaaaa80;
+	background-color: #f5f5f54d;
+}
+
+.fold-top-left {
+	position: absolute;
+
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 50px 50px 0 0;
+	border-color: rgba(68, 117, 126, 0.377) transparent transparent transparent;
 }
