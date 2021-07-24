@@ -50,14 +50,14 @@ const useStyles = makeStyles(() => ({
     color: "#f7b733",
   },
   // 'menuButton:hover': {
-    
+
   // }
 }));
 
 export default function Nav() {
   const { header, logo, menuButton, toolbar, drawerContainer, iconSize } = useStyles();
 
- const { isAuthenticated } = useContext(userContext);
+  const { isAuthenticated } = useContext(userContext);
 
   const [state, setState] = useState({
     mobileView: false,
@@ -107,6 +107,17 @@ export default function Nav() {
           >
             Home
           </Button>
+          <Button
+            {...{
+              key: "contact",
+              color: "inherit",
+              to: "/contact",
+              component: RouterLink,
+              className: menuButton
+            }}
+          >
+            Contact Us
+          </Button>
           {!isAuthenticated &&
             <Button
               {...{
@@ -142,8 +153,6 @@ export default function Nav() {
             >
               Logout
             </Button>}
-
-
         </div>
       </Toolbar >
     );
@@ -187,6 +196,17 @@ export default function Nav() {
               }}
             >
               <MenuItem>Home</MenuItem>
+            </Link>
+            <Link
+              {...{
+                component: RouterLink,
+                to: "/contact",
+                color: "inherit",
+                style: { textDecoration: "none" },
+                key: "contact",
+              }}
+            >
+              <MenuItem>Contact Us</MenuItem>
             </Link>
             {!isAuthenticated &&
               <Link

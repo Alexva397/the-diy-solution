@@ -33,7 +33,7 @@ app.use(passport.session());
 
 app.use(routes);
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/diydb', 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/diydb',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -44,6 +44,6 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/diydb',
 );
 
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
