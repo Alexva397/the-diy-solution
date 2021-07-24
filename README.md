@@ -6,6 +6,7 @@
 - [Team](#team)
 - [Technology Used](#technology)
 - [Resources](#resources)
+- [Challenges](#challenges)
 - [Licensing Information](#licensing)
 - [Screenshots](#screenshots)
 - [GIF Demonstration](#demonstrations)
@@ -66,6 +67,12 @@ In the future, the user will be able to upload before, progress, and after photo
 
   <br>
   <br>
+
+## Challenges
+
+Some of the challenges we faced was trying to get a photo upload to work We were able to get photos uploading to MongoDB, however, it was saving to a folder which is not supported by Heroku. Some progress was made to uploading a photo to Cloudinary for hosting, though despite getting a 200 response, the image was not appearing on Cloudinary. More testing needed.
+
+Another challenge was getting new items to show up on the project detail page without requiring a page refresh. We ran into issues with our data structure not playing nicely with the .map() function in this instance.
 
 ## Licensing Information
 
