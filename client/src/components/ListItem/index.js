@@ -33,7 +33,7 @@ function ListItem({title,description,id, handleProjectDelete, color, editMode}) 
 
   const {projectLink, deleteButton, noLink} = useStyles();
     return (
-      <Link className= {noLink}>
+      <Link className= {noLink} to={"/landing/" + id}>
         <div className="list-item-div" style={{background: color}}>
           <div className="fold-top-left"></div>
           <Grid container spacing={2}>
