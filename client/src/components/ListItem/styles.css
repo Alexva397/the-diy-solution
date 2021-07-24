@@ -1,23 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&family=Architects+Daughter&family=Heebo:wght@200&family=Comfortaa:wght@300&display=swap');
+
 .list-item-div {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
 	border-radius: 2px;
 	box-shadow: 0px 2px 2px #818181;
+	transition: all .3s ease-in-out;
 	text-align: left;
-	height: 200px;
-}
-
-.project-link {
+	width: 100%;
 	text-decoration: none;
-	color: black;
 }
 
-.project-link h1 {
-	text-align: center;
-	padding-top: 15px;
-	-webkit-text-stroke: 0.px rgb(0, 0, 0);
-	/* text-shadow: 0px 2px 2px #131313; */
+.list-item-div:hover {
+	transform: scale(1.1);
+}
+
+.project-title {
 	color: black;
 }
 
@@ -25,7 +24,9 @@
 	padding-bottom: 15px;
 	padding-top: 10px;
 	padding-left: 10px;
-
+	font-size: 17px;
+	letter-spacing: 1.25px;
+	font-family: 'Heebo', sans-serif;
 	background-color: #f5f5f54d;
 }
 

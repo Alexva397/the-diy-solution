@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from "@material-ui/core/styles";
-import { Grid } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 import ListItem from '../components/ListItem';
 import ProjectModal from '../components/ProjectModal'
 import API from '../utils/API'
@@ -34,29 +34,7 @@ function Landing() {
     const [username, setUsername] = useState("");
     const [userId, setUserId] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    //var sampleColors = ["#96ded1", "#3fb0ac", "#008080","#173e43"];
-    //var sampleColors = ["#c9ffe5", "#96ded1", "#3fb0ac","#008080"];
-    //var sampleColors = ["#dddfd4", "#96ded1", "#3fb0ac","#008080"];
-
-    // var colors = ["linear-gradient(90deg, rgba(221,213,228,1) 35%, rgba(175,220,223,1) 100%)", 
-    //                 "linear-gradient(90deg, rgba(175,220,223,1) 35%, rgba(223,214,175,1) 100%)", 
-    //                 "linear-gradient(90deg, rgba(223,214,175,1) 35%, rgba(223,194,175,1) 100%)",
-    //                 "linear-gradient(90deg, rgba(223,194,175,1) 35%, rgba(221,213,228,1) 100%)"];
-
-    // var colors = ["linear-gradient(90deg, rgba(150,222,209,1) 35%, rgba(63,176,172,1) 100%)", 
-    // "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(0,128,128,1) 100%)", 
-    // "linear-gradient(90deg, rgba(0,128,128,1) 35%, rgba(23,62,67,1) 100%)",
-    // "linear-gradient(90deg, rgba(23,62,67,1) 35%, rgba(0,128,128,1) 100%)",
-    // "linear-gradient(90deg, rgba(0,128,128,1) 35%,rgba(63,176,172,1)  100%)",
-    // "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(150,222,209,1)100%)"];
-
-    // var colors = ["linear-gradient(90deg, rgba(201,255,229,1) 35%, rgba(150,222,209,1) 100%)", 
-    // "linear-gradient(90deg, rgba(150,222,209,1) 35%, rgba(63,176,172,1) 100%)", 
-    // "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(0,128,128,1) 100%)",
-    // "linear-gradient(90deg, rgba(0,128,128,1) 35%, rgba(63,176,172,1) 100%)",
-    // "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(150,222,209,1) 100%)",
-    // "linear-gradient(90deg, rgba(150,222,209,1) 35%, rgba(201,255,229,1) 100%)"];
+    const [editMode, setEditMode] = useState(false);
 
     var colors = ["linear-gradient(90deg, rgba(201,255,229,1) 35%, rgba(150,222,209,1) 100%)", 
     "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(0,128,128,1) 100%)",
@@ -84,6 +62,15 @@ function Landing() {
 		.catch(err => console.log(err));
 	  };
 
+    function toggleEditMode() {
+        if(!editMode){
+            setEditMode(true)
+        } else {
+            setEditMode(false)
+        }
+        
+
+    }
     function loadProjects() {
         API.getProjects()
             .then(res => { console.log(res.data); setState({projects: res.data})})
@@ -92,11 +79,14 @@ function Landing() {
     return (
         <div className={root}>
 
-            <div class= "button-bar">
-                <ProjectModal></ProjectModal>   
+            <div className= "button-bar">
+                <ProjectModal></ProjectModal>
+                <div>
+                <button className= "delete-project" onClick={() => toggleEditMode()}>- Delete Projects</button>
+                </div>  
             </div>
-            
-            <Grid container className={appContainer} spacing={3}>
+
+            <Grid container className={appContainer} alignItems="center" spacing={3}>
                 {
                 state.projects.map((project, i) => {
 
@@ -107,8 +97,8 @@ function Landing() {
                     var itemColor = colors[i-(colors.length*iterationCount) + colors.length]
 
                     return <Grid item xs={6} md={4} lg= {3}>
-                        <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} color={itemColor}
-                        materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)}></ListItem>
+                        <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} color={itemColor} 
+                        materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)} editMode={editMode}></ListItem>
                         </Grid>
                 })
             }
