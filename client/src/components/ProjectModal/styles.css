@@ -1,0 +1,17 @@
+.create-button {
+	font-size: 30px;
+	width: fit-content;
+	margin-top: 10px;
+	margin-right: auto;
+	background-color: #f7b733;
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	top: -100px;
+	transition-property: border;
+	transition-duration: 0.2s;
+}
+
+.create-button:hover {
+	border: #c28f29 1px;
+}
