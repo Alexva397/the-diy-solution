@@ -8,12 +8,13 @@ import Signup from "./pages/SignIn";
 import Landing from "./pages/LandingPage";
 import Detail from "./pages/Detail";
 import WIP from "./pages/WIP";
+import ContactPage from "./pages/Contact";
 import "./assets/css/globalStyles.css";
 import { userContext } from "./Context";
 
 function App() {
 
-  const { userObject, isAuthenticated  } = useContext(userContext);
+  const { userObject, isAuthenticated } = useContext(userContext);
 
   console.log(userObject, isAuthenticated);
 
@@ -25,6 +26,9 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/contact">
+              <ContactPage />
             </Route>
             <Route exact path="/login">
               {isAuthenticated ? <Redirect to="/landing" /> : <Login />}
