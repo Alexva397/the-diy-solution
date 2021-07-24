@@ -48,7 +48,6 @@ const useStyles = makeStyles({
         height: '75px',
         position: 'relative',
         zIndex: '3'
-
     },
     thirdPaper: {
         paddingTop: '15px',
