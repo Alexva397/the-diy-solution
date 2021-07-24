@@ -99,7 +99,7 @@ function SignIn() {
         <Container component="main" maxWidth="xs">
             <CssBaseline />
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-            <Alert onClose={handleClose} severity="error">
+                <Alert onClose={handleClose} severity="error">
                     <strong>Username</strong> or <strong>Password</strong> is incorrect.               
                 </Alert>
             </Snackbar>

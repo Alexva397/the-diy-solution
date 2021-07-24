@@ -15,7 +15,6 @@ function App() {
 
   const { userObject, isAuthenticated  } = useContext(userContext);
 
-  console.log(userObject, isAuthenticated);
 
   return (
     <>
