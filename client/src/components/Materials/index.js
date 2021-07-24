@@ -7,6 +7,13 @@ import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import API from "../../utils/API";
 
+const colors = [
+    '#dddfd4',
+    '#3fb0ac',
+    '#173e43',
+    '#f7b733'
+]
+
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -138,9 +145,9 @@ function Materials({ key, materials, submit }) {
                         <Th></Th>
                     </Tr>
                 </Thead>
-                {materials.map(material => (
+                {materials.map((material, i) => (
                     <Tbody>
-                        <Tr>
+                        <Tr style={{ backgroundColor: colors[i] }}>
                             <Td>{material.item}</Td>
                             <Td>{material.quantity}</Td>
                             <Td>${material.purchasePrice}</Td>

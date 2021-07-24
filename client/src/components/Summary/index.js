@@ -27,6 +27,8 @@ const useStyles = makeStyles({
     balance: {
         fontSize: '20px',
         color: 'rgb(255, 6, 6)',
+        float: 'left',
+        marginLeft: '40px'
     },
     firstPaper: {
         paddingTop: '50px',
@@ -46,7 +48,6 @@ const useStyles = makeStyles({
         height: '75px',
         position: 'relative',
         zIndex: '3'
-
     },
     thirdPaper: {
         paddingTop: '15px',
@@ -80,42 +81,42 @@ function Summary({ title, budget, totalSpent }) {
 
     return (
         <div>
-        <h1>Your project finances, at a glance.</h1>
-        <Grid container direction= "column" className={classes.budget} xs={4}>
-            <CssBaseline />
-           
+            <h1>Your project finances, at a glance.</h1>
+            <Grid container direction="column" className={classes.budget} xs={4}>
+                <CssBaseline />
 
-                    <Grid item>
+
+                <Grid item>
                     <Paper className={classes.firstPaper}>
-                            <Typography className={classes.name}>
-                                {title}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item>
+                        <Typography className={classes.name}>
+                            {title}
+                        </Typography>
+                    </Paper>
+                </Grid>
+                <Grid item>
                     <Paper className={classes.secondPaper}>
-                            <Typography className={classes.title}>
-                                Budget: ${budget}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item>
+                        <Typography className={classes.title}>
+                            Budget: ${budget}
+                        </Typography>
+                    </Paper>
+                </Grid>
+                <Grid item>
                     <Paper className={classes.thirdPaper}>
-                            <Typography className={classes.title}>
-                                Cost to Date: ${totalSpent}
-                            </Typography>
-                        </Paper>
-                    </Grid>
-                    <Grid item>
+                        <Typography className={classes.title}>
+                            Cost to Date: ${totalSpent}
+                        </Typography>
+                    </Paper>
+                </Grid>
+                <Grid item>
                     <Paper className={classes.lastPaper}>
-                            <Typography className={balance < 0 ? classes.balance : classes.title}>
-                                Balance: ${balance}
-                            </Typography>
-                        </Paper>
-                    </Grid>
+                        <Typography className={balance < 0 ? classes.balance : classes.title}>
+                            Balance: ${balance}
+                        </Typography>
+                    </Paper>
+                </Grid>
 
 
-        </Grid>
+            </Grid>
         </div>
     );
 }
