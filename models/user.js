@@ -8,12 +8,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    // projects: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Project'
-    // }],
     email: {
         type: String,
+        match: /.+\@.+\..+/,
+        unique: true,
         required: false,
     },
     password: {
