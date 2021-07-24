@@ -26,13 +26,13 @@ const useStyles = makeStyles(() => ({
     },
   },
   logo: {
-    fontFamily: "Inter",
+    fontFamily: "Architects Daughter",
     fontWeight: 600,
     color: "#fff",
     textAlign: "left",
   },
   menuButton: {
-    fontFamily: "Inter",
+    fontFamily: "Architects Daughter",
     fontWeight: 700,
     size: "18px",
     marginLeft: "38px",
