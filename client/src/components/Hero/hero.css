@@ -19,21 +19,23 @@ video {
 }
 
 .hero-container > h1 {
-	color: #fff;
-	font-size: 100px;
+  color: #fff;
+  font-size: 100px;
+  font-Family: "Architects Daughter";
 }
 
 .hero-container > h3 {
-	color: #fff;
-	font-size: 50px;
-	margin-top: 30px;
-}
+    color: #fff;
+    font-size: 50px;
+    margin-top: 30px;
+    font-Family: "Architects Daughter";
+  }
 
 .hero-container > p {
-	margin-top: 8px;
-	color: #fff;
-	font-size: 30px;
-	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+  margin-top: 8px;
+  color: #fff;
+  font-size: 30px;
+  font-Family: "Architects Daughter";
 }
 
 @media screen and (max-width: 960px) {
