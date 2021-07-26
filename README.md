@@ -80,27 +80,30 @@ This project is covered under the MIT license.
 
 ## Screenshots
 
-![]()
-![]()
+![](client\src\assets\images\screenshot-1.png)
+![](client\src\assets\images\screenshot-2.png)
+![](client\src\assets\images\screenshot-3.png)
+![](client\src\assets\images\screenshot-4.png)
+![](client\src\assets\images\screenshot-5.png)
 
 ## Demonstrations
 
 ### Login
 
-![]()
+![](client\src\assets\videos\login.gif)
 
 ### Create New Project
 
-![]()
+![](client\src\assets\videos\create-project.gif)
 
 ### Delete Project
 
-![]()
+![](client\src\assets\videos\delete-project.gif)
 
 ### Enter/Delete Item
 
-![]()
+![](client\src\assets\videos\enter-delete-item.gif)
 
 ### Over Budget!
 
-![]()
+![](client\src\assets\videos\over-budget.gif)
