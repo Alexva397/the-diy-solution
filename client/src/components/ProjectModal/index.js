@@ -4,11 +4,7 @@ import Modal from '@material-ui/core/Modal';
 import TextField from "@material-ui/core/TextField";
 import API from '../../utils/API';
 import { userContext } from "../../Context";
-
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
+import './styles.css'
 
 function getModalStyle() {
   return {

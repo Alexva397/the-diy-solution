@@ -9,7 +9,6 @@ import API from "../../utils/API";
 
 const colors = [
     '#dddfd4',
-    '#3fb0ac',
     '#173e43',
     '#f7b733'
 ]
