@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button"
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,8 +10,6 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import Snackbar from '@material-ui/core/Snackbar';
-import { Alert } from '@material-ui/lab';
 import { GoogleLoginButton, FacebookLoginButton, TwitterLoginButton } from "react-social-login-buttons";
 import auth from "../../utils/auth";
 import axios from "axios";
@@ -62,20 +60,6 @@ function SignIn() {
 
     const [loginUsername, setLoginUsername] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
-    // const [errorMessage, setErrorMessage] = useState(false);
-    const [open, setOpen] = React.useState(false);
-
-    // useEffect(() => {
-    //     // setErrorMessage(false);
-    // })
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-          return;
-        }
-    
-        setOpen(false);
-    };
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -84,12 +68,9 @@ function SignIn() {
         .then((res) => {
             console.log(res)
             if (res.data.redirect === "/landing") {
-                // setErrorMessage(false);
-                setOpen(false);
                 window.location = "/landing";
-            } else {
-                // setErrorMessage(true);
-                setOpen(true);
+            } else if (res.data.redirect === "/login"){
+                window.location = "/login";
             }
         });
 
@@ -98,16 +79,6 @@ function SignIn() {
     return (
         <Container component="main" maxWidth="xs">
             <CssBaseline />
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error">
-                    <strong>Username</strong> or <strong>Password</strong> is incorrect.               
-                </Alert>
-            </Snackbar>
-            {/* <Snackbar open={errorMessage} autoHideDuration={6000}>
-                <Alert severity="error">
-                    <strong>Username</strong> or <strong>Password</strong> is incorrect.               
-                </Alert>
-            </Snackbar> */}
             <div className={classes.paper}>
                 <Avatar className={classes.avatar}>
                     <LockOutlinedIcon />

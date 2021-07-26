@@ -14,8 +14,7 @@ import { userContext } from "./Context";
 
 function App() {
 
-  const { userObject, isAuthenticated } = useContext(userContext);
-
+  const { isAuthenticated } = useContext(userContext);
 
   return (
     <>
