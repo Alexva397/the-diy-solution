@@ -26,10 +26,7 @@ function Landing() {
     const { userObject, isAuthenticated } = useContext(userContext);
 
     const [state, setState] = useState({
-        // userId: '',
         projects: [],
-        // username: '',
-        // isLoggedIn: false,
     });
     const [username, setUsername] = useState("");
     const [userId, setUserId] = useState("");
@@ -44,11 +41,6 @@ function Landing() {
 
     useEffect(() => {
         if (isAuthenticated) {
-            // setState({ ...state, 
-            //     userId: userObject._id,
-            //     username: userObject.username,
-            //     isLoggedIn: true,
-            // });
             setUsername(userObject.username);
             setUserId(userObject._id);
             setIsLoggedIn(true);

@@ -34,9 +34,9 @@ router.post('/login', passport.authenticate('local'), (req, res, next) => {
         const redir = { redirect: '/landing' };
         return res.json(redir);
     } else {
-        return res.json({ message: 'Username or password incorrect. Please try again.' })
-        // const redir = { redirect: '/login' };
-        // return res.json(redir);
+        // return res.json({ message: 'Username or password incorrect. Please try again.' })
+        const redir = { redirect: '/login' };
+        return res.json(redir);
     }
 });
 
