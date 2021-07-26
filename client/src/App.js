@@ -14,9 +14,7 @@ import { userContext } from "./Context";
 
 function App() {
 
-  const { userObject, isAuthenticated } = useContext(userContext);
-
-  console.log(userObject, isAuthenticated);
+  const { isAuthenticated } = useContext(userContext);
 
   return (
     <>
