@@ -13,6 +13,7 @@ import "./assets/css/globalStyles.css";
 import { userContext } from "./Context";
 
 function App() {
+  
 
   const { isAuthenticated } = useContext(userContext);
 
