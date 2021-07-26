@@ -2,12 +2,13 @@ import kate from "../assets/images/kate.png";
 import placeholder from "../assets/images/PngItem_307416.png";
 import katy from "../assets/images/katy.png";
 import jp from "../assets/images/jp.png";
+import alex from "../assets/images/alex.png";
 
 const team = [
     {
         "id": 1,
         "name": "Alexander Vadeboncouer",
-        "photo": placeholder,
+        "photo": alex,
         "alt": "Alex",
         "github": "https://github.com/Alexva397",
         "linkedin": "https://www.linkedin.com/in/avadeboncoeur/",
