@@ -33,9 +33,9 @@ function Landing() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [editMode, setEditMode] = useState(false);
 
-    var colors = ["linear-gradient(90deg, rgba(201,255,229,1) 35%, rgba(150,222,209,1) 100%)", 
-    "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(0,128,128,1) 100%)",
-    "linear-gradient(90deg, rgba(150,222,209,1) 35%, rgba(63,176,172,1) 100%)"];
+    var colors = ["linear-gradient(90deg, rgba(201,255,229,1) 35%, rgba(150,222,209,1) 100%)",
+        "linear-gradient(90deg, rgba(63,176,172,1) 35%, rgba(0,128,128,1) 100%)",
+        "linear-gradient(90deg, rgba(150,222,209,1) 35%, rgba(63,176,172,1) 100%)"];
 
     var iterationCount = 1;
 
@@ -45,58 +45,58 @@ function Landing() {
             setUserId(userObject._id);
             setIsLoggedIn(true);
             loadProjects();
-        }        
+        }
     }, [isAuthenticated])
 
-    function deleteProject(id){
-		API.deleteProject(id)
-		.then(res => loadProjects())
-		.catch(err => console.log(err));
-	  };
+    function deleteProject(id) {
+        API.deleteProject(id)
+            .then(res => loadProjects())
+            .catch(err => console.log(err));
+    };
 
     function toggleEditMode() {
-        if(!editMode){
+        if (!editMode) {
             setEditMode(true)
         } else {
             setEditMode(false)
         }
-        
+
 
     }
     function loadProjects() {
         API.getProjects()
-            .then(res => { console.log(res.data); setState({projects: res.data})})
+            .then(res => { console.log(res.data); setState({ projects: res.data }) })
             .catch(err => console.log(err));
     };
     return (
         <div className={root}>
 
-            <div className= "button-bar">
+            <div className="button-bar">
                 <ProjectModal></ProjectModal>
                 <div>
-                <button className= "delete-project" onClick={() => toggleEditMode()}>- Delete Projects</button>
-                </div>  
+                    <button className="delete-project" onClick={() => toggleEditMode()}>- Delete Projects</button>
+                </div>
             </div>
 
             <Grid container className={appContainer} alignItems="center" spacing={3}>
                 {
-                state.projects.map((project, i) => {
+                    state.projects.map((project, i) => {
 
-                    if ((i === ((colors.length )*iterationCount) && (iterationCount !== 0))|| i === colors.length){
-                        iterationCount++;
-                    }
+                        if ((i === ((colors.length) * iterationCount) && (iterationCount !== 0)) || i === colors.length) {
+                            iterationCount++;
+                        }
 
-                    var itemColor = colors[i-(colors.length*iterationCount) + colors.length]
+                        var itemColor = colors[i - (colors.length * iterationCount) + colors.length]
 
-                    return <Grid item xs={6} md={4} lg= {3}>
-                        <ListItem key= {project._id} id={project._id} title= {project.title} description= {project.description} color={itemColor} 
-                        materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)} editMode={editMode}></ListItem>
+                        return <Grid item xs={6} md={4} lg={3}>
+                            <ListItem key={project._id} id={project._id} title={project.title} description={project.description} color={itemColor}
+                                materials={project.materials} photos={project.photos} docs={project.docs} handleProjectDelete={() => deleteProject(project._id)} editMode={editMode}></ListItem>
                         </Grid>
-                })
-            }
-            
+                    })
+                }
+
             </Grid>
-                         
+
         </div>
     )
 }
