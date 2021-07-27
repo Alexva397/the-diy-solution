@@ -86,10 +86,6 @@ This project is covered under the MIT license.
 
 ## Demonstrations
 
-### Delete Project
-
-![](client\src\assets\videos\delete-project.gif)
-
 ### Enter/Delete Item
 
 ![](client\src\assets\videos\enter-delete-item.gif)
