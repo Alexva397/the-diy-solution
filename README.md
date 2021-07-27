@@ -80,30 +80,30 @@ This project is covered under the MIT license.
 
 ## Screenshots
 
-![](client\src\assets\images\screenshot-1.png)
-![](client\src\assets\images\screenshot-2.png)
-![](client\src\assets\images\screenshot-3.png)
-![](client\src\assets\images\screenshot-4.png)
-![](client\src\assets\images\screenshot-5.png)
+![](readme-media/screenshot-1.png)
+![](readme-media/screenshot-2.png)
+![](readme-media/screenshot-3.png)
+![](readme-media/screenshot-4.png)
+![](readme-media/screenshot-5.png)
 
 ## Demonstrations
 
 ### Login
 
-![](client\src\assets\videos\login.gif)
+![](readme-media/login.gif)
 
 ### Create New Project
 
-![](client\src\assets\videos\create-project.gif)
+![](readme-media/create-project.gif)
 
 ### Delete Project
 
-![](client\src\assets\videos\delete-project.gif)
+![](readme-media/delete-project.gif)
 
 ### Enter/Delete Item
 
-![](client\src\assets\videos\enter-delete-item.gif)
+![](readme-media/enter-delete-item.gif)
 
 ### Over Budget!
 
-![](client\src\assets\videos\over-budget.gif)
+![](readme-media/over-budget.gif)
